@@ -1,0 +1,1984 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Obour package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Obour\n"
+"Report-Msgid-Bugs-To: https://github.com/Jazzmedo/Obour/issues\n"
+"POT-Creation-Date: 2026-10-01 04:24+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: obour/app.py:43
+msgid "This app is no longer saved in Obour."
+msgstr ""
+
+#: obour/app.py:53 obour/ui/window.py:558
+#, python-brace-format
+msgid "Install sshfs on {host} to paste your files there"
+msgstr ""
+
+#: obour/app.py:55
+msgid "Open Obour, then the host's ⋮ menu → Set Up Host…"
+msgstr ""
+
+#: obour/app.py:63
+#, python-brace-format
+msgid "{name}: GPU Acceleration turned off for {host}"
+msgstr ""
+
+#: obour/app.py:65
+msgid ""
+"No window appeared with GPU Acceleration, which freezes waypipe on some "
+"hosts. Trying Wayland again without it."
+msgstr ""
+
+#: obour/app.py:71 obour/ui/window.py:651
+#, python-brace-format
+msgid "no Wayland window appeared within {seconds} seconds"
+msgstr ""
+
+#: obour/app.py:73 obour/ui/window.py:679
+#, python-brace-format
+msgid "{name}: Wayland failed, using X11"
+msgstr ""
+
+#: obour/app.py:74 obour/ui/window.py:673
+#, python-brace-format
+msgid ""
+"{name} couldn't open over Wayland ({reason}), so Obour is opening it with "
+"X11 instead. If that works, Obour remembers it for this app. To stop this, "
+"turn off “Try X11 When Wayland Fails” in Preferences."
+msgstr ""
+
+#: obour/app.py:91 obour/ui/window.py:573
+msgid "Allow"
+msgstr ""
+
+#: obour/app.py:92 obour/ui/window.py:572
+msgid "Don't Allow"
+msgstr ""
+
+#: obour/app.py:93 obour/ui/window.py:567
+#, python-brace-format
+msgid "Copy Files With {host}?"
+msgstr ""
+
+#: obour/app.py:94 obour/ui/window.py:568
+#, python-brace-format
+msgid ""
+"While {name} runs, you can copy and paste files between this computer and "
+"{host}. The host can read the files you copy (read-only) during that time."
+msgstr ""
+
+#: obour/app.py:133
+#, python-brace-format
+msgid "Couldn't start {name}"
+msgstr ""
+
+#: obour/app.py:192
+#, python-brace-format
+msgid "{name} stopped"
+msgstr ""
+
+#: obour/app.py:197
+#, python-brace-format
+msgid "{host} needs a password. Open Obour and launch it once to log in."
+msgstr ""
+
+#: obour/app.py:249
+#, python-brace-format
+msgid "Backed up {count} app to {path}"
+msgid_plural "Backed up {count} apps to {path}"
+msgstr[0] ""
+msgstr[1] ""
+
+#: obour/app.py:271
+#, python-brace-format
+msgid "Restored {count} app from {date}"
+msgid_plural "Restored {count} apps from {date}"
+msgstr[0] ""
+msgstr[1] ""
+
+#: obour/backup.py:141 obour/backup.py:144
+msgid "This isn’t an Obour backup."
+msgstr ""
+
+#: obour/backup.py:147
+msgid "This backup was made by a newer Obour. Update Obour to restore it."
+msgstr ""
+
+#: obour/backup.py:153
+#, python-brace-format
+msgid "This backup has an unsafe file in it: {name}"
+msgstr ""
+
+#: obour/backup.py:196
+#, python-brace-format
+msgid "Your previous setup was saved to {path}"
+msgstr ""
+
+#: obour/backup.py:238
+#, python-brace-format
+msgid "Restored your SSH key {path}"
+msgstr ""
+
+#: obour/backup.py:244
+#, python-brace-format
+msgid ""
+"You already have a different SSH key in {path}; the backup’s key was saved "
+"as {kept}"
+msgstr ""
+
+#: obour/desktop.py:92
+#, python-brace-format
+msgid "Runs on {host} via Obour"
+msgstr ""
+
+#: obour/hostsetup.py:33
+msgid "Shows Wayland apps (Firefox, GTK 4, Qt 6…)"
+msgstr ""
+
+#: obour/hostsetup.py:35
+msgid "Shows X11 apps"
+msgstr ""
+
+#: obour/hostsetup.py:37
+msgid "PulseAudio client library"
+msgstr ""
+
+#: obour/hostsetup.py:38
+msgid "Plays sound here. Works with PipeWire or PulseAudio on this computer"
+msgstr ""
+
+#: obour/hostsetup.py:40
+msgid "ALSA sound plugin"
+msgstr ""
+
+#: obour/hostsetup.py:41
+msgid "Plays sound here from apps that use ALSA directly"
+msgstr ""
+
+#: obour/hostsetup.py:44
+msgid "D-Bus session tool"
+msgstr ""
+
+#: obour/hostsetup.py:45
+msgid ""
+"Opens apps as separate windows instead of reusing a copy running on the host"
+msgstr ""
+
+#: obour/hostsetup.py:48
+msgid "Lists the host's apps in the app browser"
+msgstr ""
+
+#: obour/hostsetup.py:50
+msgid "Dark style for Qt 5 apps"
+msgstr ""
+
+#: obour/hostsetup.py:51
+msgid "Dark mode for Qt 5 apps such as VLC"
+msgstr ""
+
+#: obour/hostsetup.py:55
+msgid "GTK theme for Qt 6 apps"
+msgstr ""
+
+#: obour/hostsetup.py:55
+msgid "Light/dark style for Qt 6 apps"
+msgstr ""
+
+#: obour/hostsetup.py:58
+msgid "GTK theme for Qt 5 apps"
+msgstr ""
+
+#: obour/hostsetup.py:59
+msgid "Fonts and file dialogs for Qt 5 apps"
+msgstr ""
+
+#: obour/hostsetup.py:63
+msgid "Your colors, icons and fonts in Qt 6 apps"
+msgstr ""
+
+#: obour/hostsetup.py:66
+msgid "Your colors, icons and fonts in Qt 5 apps"
+msgstr ""
+
+#: obour/hostsetup.py:69
+msgid "KDE Plasma integration"
+msgstr ""
+
+#: obour/hostsetup.py:69
+msgid "Your KDE colors and fonts in Qt apps"
+msgstr ""
+
+#: obour/hostsetup.py:73
+msgid "The Breeze style for Qt apps"
+msgstr ""
+
+#: obour/hostsetup.py:76
+msgid "LXQt Qt plugin"
+msgstr ""
+
+#: obour/hostsetup.py:76
+msgid "Your LXQt colors and icons in Qt apps"
+msgstr ""
+
+#: obour/hostsetup.py:79
+msgid "Your Kvantum style in Qt apps"
+msgstr ""
+
+#: obour/hostsetup.py:82
+msgid "Breeze icons"
+msgstr ""
+
+#: obour/hostsetup.py:83
+msgid "Icons your icon theme borrows from Breeze"
+msgstr ""
+
+#: obour/hostsetup.py:86
+msgid "Your GTK settings on hosts without dconf"
+msgstr ""
+
+#: obour/hostsetup.py:86
+msgid "dconf tools"
+msgstr ""
+
+#: obour/hostsetup.py:88
+msgid "Copy and paste files between the computers"
+msgstr ""
+
+#: obour/hostsetup.py:168
+msgid ""
+"Obour doesn't know this host's package manager. Install the missing tools on "
+"the host yourself."
+msgstr ""
+
+#: obour/hostsetup.py:185
+msgid ""
+"sudo isn't installed on the host, so Obour can't install packages. Log in as "
+"root, or install them yourself."
+msgstr ""
+
+#: obour/hostsetup.py:201 obour/launch.py:415 obour/look.py:675
+#: obour/remote.py:94 obour/remote.py:225 obour/remote.py:334
+#, python-brace-format
+msgid "`{program}` is not installed on this computer."
+msgstr ""
+
+#: obour/hostsetup.py:221
+msgid "Wrong password for sudo on the host."
+msgstr ""
+
+#: obour/hostsetup.py:223
+msgid ""
+"Your user on the host isn't allowed to use sudo. Ask an administrator to "
+"install the packages."
+msgstr ""
+
+#: obour/hostsetup.py:226
+msgid "sudo on the host needs your password."
+msgstr ""
+
+#: obour/hostsetup.py:230
+msgid "Another program on the host is installing software. Try again later."
+msgstr ""
+
+#: obour/hostsetup.py:232
+#, python-brace-format
+msgid "Installing failed (exit code {code}). See the log for details."
+msgstr ""
+
+#: obour/launch.py:118
+msgid "Wayland and X11"
+msgstr ""
+
+#: obour/launch.py:119 obour/ui/settings_rows.py:21
+#: obour/ui/settings_rows.py:32
+msgid "Automatic"
+msgstr ""
+
+#: obour/launch.py:157
+#, python-brace-format
+msgid ""
+"Using X11 for {name}: it didn't work over Wayland before (Edit… → Try "
+"Wayland Again)."
+msgstr ""
+
+#: obour/launch.py:162
+msgid ""
+"Wayland forwarding needs a Wayland session on this computer. Set this app's "
+"display mode to X11 or Automatic."
+msgstr ""
+
+#: obour/launch.py:165
+msgid ""
+"waypipe is not installed on this computer; it is needed for Wayland "
+"forwarding."
+msgstr ""
+
+#: obour/launch.py:180
+#, python-brace-format
+msgid "waypipe isn't installed on {host}; using X11 forwarding instead."
+msgstr ""
+
+#: obour/launch.py:208
+#, python-brace-format
+msgid "Copied your cursor theme ({theme}) to {host}."
+msgstr ""
+
+#: obour/launch.py:211
+#, python-brace-format
+msgid "Couldn't copy your cursor theme to {host}: {error}"
+msgstr ""
+
+#: obour/launch.py:224
+#, python-brace-format
+msgid "Couldn't read your desktop's look: {error}"
+msgstr ""
+
+#: obour/launch.py:229
+#, python-brace-format
+msgid "Couldn't copy your desktop's look to {host}: {error}"
+msgstr ""
+
+#: obour/launch.py:459
+#, python-brace-format
+msgid ""
+"Apps that use ALSA directly have no sound until the ALSA sound plugin is "
+"installed on {host} (⋮ → Set Up Host…)."
+msgstr ""
+
+#: obour/launch.py:463
+msgid "No local PipeWire/PulseAudio socket found; launching without sound."
+msgstr ""
+
+#: obour/launch.py:497
+#, python-brace-format
+msgid ""
+"Qt 5 apps on {host} stay light until a dark Qt style is installed there (⋮ → "
+"Set Up Host…)."
+msgstr ""
+
+#: obour/launch.py:505
+msgid ""
+"Install `x11-xserver-utils` (xsetroot) on this computer so Qt 5 apps like "
+"VLC show your cursor."
+msgstr ""
+
+#: obour/launch.py:575
+#, python-brace-format
+msgid ""
+"GPU Acceleration is off for {host}: Wayland apps showed no window with it "
+"there."
+msgstr ""
+
+#: obour/launch.py:582
+msgid ""
+"H.264 video needs GPU Acceleration (Preferences); using LZ4 compression "
+"instead."
+msgstr ""
+
+#: obour/launch.py:623
+#, python-brace-format
+msgid ""
+"Files can be copied, pasted and dragged between this computer and {name} "
+"while it runs."
+msgstr ""
+
+#: obour/launch.py:626
+#, python-brace-format
+msgid "Files can be copied and pasted with {host} while {name} runs."
+msgstr ""
+
+#: obour/launch.py:672
+msgid "it crashed"
+msgstr ""
+
+#: obour/launch.py:677
+msgid "it couldn't connect to the Wayland display"
+msgstr ""
+
+#: obour/launch.py:680
+#, python-brace-format
+msgid "it stopped with exit code {code}"
+msgstr ""
+
+#: obour/launch.py:689
+msgid ""
+"waypipe isn't installed on the host. Install it there, or set this app's "
+"display mode to X11."
+msgstr ""
+
+#: obour/launch.py:692
+msgid ""
+"The host refused X11 forwarding. Set `X11Forwarding yes` in /etc/ssh/"
+"sshd_config on the host and make sure `xauth` is installed there."
+msgstr ""
+
+#: obour/launch.py:699
+msgid ""
+"The app couldn't open a Wayland window. It may only support X11; try setting "
+"its display mode to X11."
+msgstr ""
+
+#: obour/launch.py:701
+msgid ""
+"The app couldn't open the forwarded X11 display. Make sure `xauth` is "
+"installed on the host."
+msgstr ""
+
+#: obour/launch.py:708
+msgid ""
+"The app is already running on the host and refused to start a second copy "
+"(for example Firefox with the same profile). Close it there, or turn off "
+"“Separate Instance” in this app's settings to open a window of the running "
+"copy."
+msgstr ""
+
+#: obour/launch.py:713
+msgid ""
+"The command wasn't found on the host. Check the command in this app's "
+"settings."
+msgstr ""
+
+#: obour/launch.py:717
+#, python-brace-format
+msgid "The app crashed on the host: {line}"
+msgstr ""
+
+#: obour/launch.py:719
+#, python-brace-format
+msgid "The app stopped with exit code {code}."
+msgstr ""
+
+#: obour/launch.py:721
+#, python-brace-format
+msgid "Last message: {line}"
+msgstr ""
+
+#: obour/launch.py:748
+#, python-brace-format
+msgid "Connecting to {host} ({protocol}, with sound)…"
+msgstr ""
+
+#: obour/launch.py:749
+#, python-brace-format
+msgid "Connecting to {host} ({protocol})…"
+msgstr ""
+
+#: obour/look.py:126
+msgid "Unknown desktop"
+msgstr ""
+
+#: obour/look.py:643
+#, python-brace-format
+msgid "Copying your desktop look to {host} (first time, {size:.0f} MB)…"
+msgstr ""
+
+#: obour/look.py:673
+msgid "Timed out while copying your desktop look."
+msgstr ""
+
+#: obour/remote.py:24
+msgid "The host needs a password"
+msgstr ""
+
+#: obour/remote.py:47
+msgid "The host is not reachable from this network (connection timed out)."
+msgstr ""
+
+#: obour/remote.py:68
+msgid ""
+"(no working SSH key). Log in once with the password and Obour can set up key "
+"login so you won't need it again."
+msgstr ""
+
+#: obour/remote.py:72
+msgid "Host not found. Check the hostname, or add it to ~/.ssh/config."
+msgstr ""
+
+#: obour/remote.py:74
+msgid "Connection refused. Is the SSH server running on the remote machine?"
+msgstr ""
+
+#: obour/remote.py:78
+msgid ""
+"The host's key has changed since your last connection. If that is expected, "
+"remove the old key with `ssh-keygen -R <host>`."
+msgstr ""
+
+#: obour/remote.py:81
+msgid "Unknown SSH error."
+msgstr ""
+
+#: obour/remote.py:223
+msgid "Timed out while copying the cursor theme."
+msgstr ""
+
+#: obour/remote.py:245
+#, python-brace-format
+msgid "SSH connection — {error}"
+msgstr ""
+
+#: obour/remote.py:247
+#, python-brace-format
+msgid "SSH connection ({os})"
+msgstr ""
+
+#: obour/remote.py:248
+msgid "SSH connection"
+msgstr ""
+
+#: obour/remote.py:265
+#, python-brace-format
+msgid "install {packages} on the host (⋮ → Set Up Host…)"
+msgstr ""
+
+#: obour/remote.py:267
+msgid "not available from this host's package manager"
+msgstr ""
+
+#: obour/remote.py:268
+#, python-brace-format
+msgid "{title} ({purpose})"
+msgstr ""
+
+#: obour/remote.py:293
+msgid "Wrong password, or the host doesn't allow password login."
+msgstr ""
+
+#: obour/remote.py:347
+#, python-brace-format
+msgid "The host doesn't allow key login as “{user}”, only a password."
+msgstr ""
+
+#: obour/remote.py:349
+msgid "The host doesn't allow key login, only a password."
+msgstr ""
+
+#: obour/remote.py:351
+msgid ""
+"No SSH key on this computer was offered. Obour can create one and copy it to "
+"the host."
+msgstr ""
+
+#: obour/remote.py:355
+#, python-brace-format
+msgid "The host didn't accept your key ({key}) when logging in as “{user}”."
+msgstr ""
+
+#: obour/remote.py:358
+#, python-brace-format
+msgid "The host didn't accept your key ({key})."
+msgstr ""
+
+#: obour/remote.py:359
+msgid ""
+"It isn't in that user's ~/.ssh/authorized_keys, or the host ignores it "
+"because the permissions of ~/.ssh on the host are too open."
+msgstr ""
+
+#: obour/remote.py:362
+#, python-brace-format
+msgid ""
+"If you copied it for a different user, write the host as that user@{host}."
+msgstr ""
+
+#: obour/remote.py:400
+#, python-brace-format
+msgid "Created a new SSH key and set up key login for {host}."
+msgstr ""
+
+#: obour/remote.py:401
+#, python-brace-format
+msgid "Key login set up for {host}."
+msgstr ""
+
+#: obour/remote.py:402
+msgid "No password needed next time."
+msgstr ""
+
+#: obour/remote.py:404
+#, python-brace-format
+msgid ""
+"Your key was copied, but {host} still asks for a password (it may not allow "
+"key login). Obour will use your password until it quits."
+msgstr ""
+
+#: obour/remote.py:466
+msgid "Timed out while scanning applications on the host."
+msgstr ""
+
+#: obour/remote.py:468
+msgid ""
+"python3 is not installed on the host, and the app browser needs it. You can "
+"still add apps by hand."
+msgstr ""
+
+#: obour/remote.py:475
+msgid "Could not read the app list sent by the host."
+msgstr ""
+
+#: obour/route.py:89
+#, python-brace-format
+msgid ""
+"Obour tried the Tailscale address {address}, but Tailscale is stopped on "
+"this computer. Start it (`tailscale up`) and try again."
+msgstr ""
+
+#: obour/route.py:92
+#, python-brace-format
+msgid ""
+"Obour tried the Tailscale address {address}. Check that Tailscale is "
+"connected on both computers."
+msgstr ""
+
+#: obour/route.py:101
+#, python-brace-format
+msgid "Connecting to {host} through Tailscale ({address}; always)."
+msgstr ""
+
+#: obour/route.py:103
+#, python-brace-format
+msgid ""
+"Connecting to {host} through Tailscale ({address}; the usual address is "
+"unreachable)."
+msgstr ""
+
+#: obour/share.py:159
+#, python-brace-format
+msgid ""
+"sshfs isn't installed on this computer, so files copied on {host} can't be "
+"pasted here."
+msgstr ""
+
+#: obour/share.py:205
+#, python-brace-format
+msgid ""
+"sshfs isn't installed on {host}, so your files can't be pasted there (⋮ → "
+"Set Up Host…)."
+msgstr ""
+
+#: obour/share.py:271
+#, python-brace-format
+msgid "Files can't be copied through the clipboard on this desktop ({reason})."
+msgstr ""
+
+#: obour/share.py:293
+#, python-brace-format
+msgid "Couldn't share your files with {host}; see {log}."
+msgstr ""
+
+#: obour/share.py:490 obour/share.py:494
+#, python-brace-format
+msgid "File sharing didn't start; see {log}."
+msgstr ""
+
+#: obour/ui/__init__.py:77
+msgid "Known hosts"
+msgstr ""
+
+#: obour/ui/__init__.py:107
+msgid "Tailscale Address — IP or name (optional)"
+msgstr ""
+
+#: obour/ui/__init__.py:109
+msgid "Force Tailscale"
+msgstr ""
+
+#: obour/ui/__init__.py:110
+msgid ""
+"Always connect through the Tailscale address. When off, it's used only if "
+"the usual address can't be reached."
+msgstr ""
+
+#: obour/ui/browser.py:15
+msgid "Browse Remote Apps"
+msgstr ""
+
+#: obour/ui/browser.py:28
+msgid "user@host or SSH alias"
+msgstr ""
+
+#: obour/ui/browser.py:31
+msgid "Connect"
+msgstr ""
+
+#: obour/ui/browser.py:38
+msgid "Search apps"
+msgstr ""
+
+#: obour/ui/browser.py:58
+msgid "Couldn't Browse This Host"
+msgstr ""
+
+#: obour/ui/browser.py:61
+msgid "Browse a Remote Machine"
+msgstr ""
+
+#: obour/ui/browser.py:62
+msgid "Enter a host to see its installed apps."
+msgstr ""
+
+#: obour/ui/browser.py:66
+msgid "No Apps Found"
+msgstr ""
+
+#: obour/ui/browser.py:96
+#, python-brace-format
+msgid "Looking for apps on {host}…"
+msgstr ""
+
+#: obour/ui/browser.py:100
+#, python-brace-format
+msgid "Scanning apps on {host}…"
+msgstr ""
+
+#: obour/ui/browser.py:101
+#, python-brace-format
+msgid "Scanning installed apps on {host}…"
+msgstr ""
+
+#: obour/ui/browser.py:115
+#, python-brace-format
+msgid "Couldn't browse {host}: {error}"
+msgstr ""
+
+#: obour/ui/browser.py:128
+#, python-brace-format
+msgid "Found {count} app on {host}"
+msgid_plural "Found {count} apps on {host}"
+msgstr[0] ""
+msgstr[1] ""
+
+#: obour/ui/browser.py:150
+msgid "Select"
+msgstr ""
+
+#: obour/ui/browser.py:157 obour/ui/edit_dialog.py:39
+msgid "Add"
+msgstr ""
+
+#: obour/ui/browser.py:167
+msgid "Already added"
+msgstr ""
+
+#: obour/ui/browser.py:204
+#, python-brace-format
+msgid "Added {name}"
+msgstr ""
+
+#: obour/ui/browser.py:205 obour/ui/window.py:296
+msgid "Add to App Menu"
+msgstr ""
+
+#: obour/ui/browser.py:209
+#, python-brace-format
+msgid "Added {name} from {host}."
+msgstr ""
+
+#: obour/ui/edit_dialog.py:28
+msgid "Add App"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:28
+msgid "Edit App"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:37 obour/ui/login_dialog.py:33
+#: obour/ui/window.py:385 obour/ui/window.py:418 obour/ui/window.py:486
+#: obour/ui/window.py:877 obour/ui/window.py:905 obour/ui/window.py:1036
+msgid "Cancel"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:39 obour/ui/window.py:906
+msgid "Save"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:51
+msgid "Remote Machine"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:53
+msgid "Host — user@hostname or SSH alias"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:55
+msgid "Test"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:62
+msgid "Settings for All Apps of This Host…"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:78
+msgid "Application"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:79
+msgid "Pick from Host…"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:82
+msgid "Command"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:83
+msgid "Name"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:84
+msgid "Icon"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:87
+msgid "Choose…"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:90
+msgid "Use Default Icon"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:102
+msgid "Obour Uses X11 for This App"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:103
+msgid ""
+"It didn't work over Wayland (or it uses X11 anyway). Setting its own Display "
+"below overrides this."
+msgstr ""
+
+#: obour/ui/edit_dialog.py:106
+msgid "Try Wayland Again"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:113
+msgid "Obour will try Wayland again next time"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:121
+msgid "Settings for This App"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:122
+msgid ""
+"“Inherit” uses the host's setting, or Preferences when the host doesn't "
+"change it. Priority: this app → host → Preferences."
+msgstr ""
+
+#: obour/ui/edit_dialog.py:157
+msgid "Choose an Icon"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:158
+msgid "Images"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:192
+msgid "Testing…"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:199
+#, python-brace-format
+msgid "✔ Connected — missing on host: {tools}"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:200
+msgid "✔ Connected"
+msgstr ""
+
+#: obour/ui/edit_dialog.py:240
+#, python-brace-format
+msgid "Saved {name}"
+msgstr ""
+
+#: obour/ui/host_settings.py:15
+#, python-brace-format
+msgid "Settings for {host}"
+msgstr ""
+
+#: obour/ui/host_settings.py:22
+#, python-brace-format
+msgid ""
+"Apps from {host} use these settings unless they change them (Edit…). "
+"“Inherit” uses Preferences."
+msgstr ""
+
+#: obour/ui/host_settings.py:28
+msgid "A second address, for when you're away from this computer's network."
+msgstr ""
+
+#: obour/ui/host_settings.py:56 obour/ui/preferences.py:86
+#: obour/ui/preferences.py:90
+msgid "Saved"
+msgstr ""
+
+#: obour/ui/host_setup.py:16
+#, python-brace-format
+msgid "Set Up {host}"
+msgstr ""
+
+#: obour/ui/host_setup.py:30 obour/ui/host_setup.py:111
+msgid "Not Now"
+msgstr ""
+
+#: obour/ui/host_setup.py:32 obour/ui/host_setup.py:110
+msgid "Install"
+msgstr ""
+
+#: obour/ui/host_setup.py:67
+#, python-brace-format
+msgid "Your desktop: {desktop}"
+msgstr ""
+
+#: obour/ui/host_setup.py:68
+msgid "What the Host Has"
+msgstr ""
+
+#: obour/ui/host_setup.py:75
+msgid "Installed"
+msgstr ""
+
+#: obour/ui/host_setup.py:75
+msgid "Missing"
+msgstr ""
+
+#: obour/ui/host_setup.py:78
+#, python-brace-format
+msgid "{purpose}. Missing: {packages}"
+msgstr ""
+
+#: obour/ui/host_setup.py:80
+msgid "no package available"
+msgstr ""
+
+#: obour/ui/host_setup.py:83
+msgid "Your Cursor Theme"
+msgstr ""
+
+#: obour/ui/host_setup.py:84
+#, python-brace-format
+msgid "{theme}, copied to your home folder on the host (no password needed)"
+msgstr ""
+
+#: obour/ui/host_setup.py:91
+msgid "Your Desktop Look"
+msgstr ""
+
+#: obour/ui/host_setup.py:92
+#, python-brace-format
+msgid ""
+"Colors, icons and fonts ({size}), copied to your home folder on the host "
+"once (no password needed)"
+msgstr ""
+
+#: obour/ui/host_setup.py:95
+msgid "Colors and settings changed since the last copy"
+msgstr ""
+
+#: obour/ui/host_setup.py:103
+msgid "Close"
+msgstr ""
+
+#: obour/ui/host_setup.py:105
+msgid "Everything Obour can use is installed."
+msgstr ""
+
+#: obour/ui/host_setup.py:106
+msgid "Nothing more can be installed automatically."
+msgstr ""
+
+#: obour/ui/host_setup.py:110
+msgid "Copy"
+msgstr ""
+
+#: obour/ui/host_setup.py:120 obour/ui/host_setup.py:124
+msgid "Install Missing Packages"
+msgstr ""
+
+#: obour/ui/host_setup.py:125
+#, python-brace-format
+msgid "Obour will run this on {host} as administrator:"
+msgstr ""
+
+#: obour/ui/host_setup.py:134
+#, python-brace-format
+msgid "Your password on {host} (for sudo)"
+msgstr ""
+
+#: obour/ui/host_setup.py:143
+#, python-brace-format
+msgid ""
+"This host's package manager isn't supported, so install these yourself: "
+"{names}"
+msgstr ""
+
+#: obour/ui/host_setup.py:146
+#, python-brace-format
+msgid "Not in this host's official repositories: {names}"
+msgstr ""
+
+#: obour/ui/host_setup.py:148
+msgid "(Qt 5 dark style: adwaita-qt5 or kvantum from the AUR)"
+msgstr ""
+
+#: obour/ui/host_setup.py:183
+msgid "Enter your password for sudo on the host."
+msgstr ""
+
+#: obour/ui/host_setup.py:188
+#, python-brace-format
+msgid "Installing {packages} on {host}…"
+msgstr ""
+
+#: obour/ui/host_setup.py:191
+#, python-brace-format
+msgid "Copying your look to {host}…"
+msgstr ""
+
+#: obour/ui/host_setup.py:214
+#, python-brace-format
+msgid "{host} is set up"
+msgstr ""
+
+#: obour/ui/host_setup.py:215
+#, python-brace-format
+msgid "Finished, but {host} still lacks: {packages}"
+msgstr ""
+
+#: obour/ui/login_dialog.py:13
+#, python-brace-format
+msgid "{host} needs your SSH password."
+msgstr ""
+
+#: obour/ui/login_dialog.py:16 obour/ui/login_dialog.py:34
+msgid "Log In"
+msgstr ""
+
+#: obour/ui/login_dialog.py:19
+msgid "Password"
+msgstr ""
+
+#: obour/ui/login_dialog.py:22
+msgid "Don't ask again"
+msgstr ""
+
+#: obour/ui/login_dialog.py:23
+msgid "Copy your SSH key to this host so no password is needed next time"
+msgstr ""
+
+#: obour/ui/login_dialog.py:25
+msgid ""
+"Create an SSH key and copy it to this host so no password is needed next time"
+msgstr ""
+
+#: obour/ui/preferences.py:19 obour/ui/window.py:77
+msgid "Preferences"
+msgstr ""
+
+#: obour/ui/preferences.py:22
+msgid "General"
+msgstr ""
+
+#: obour/ui/preferences.py:26
+msgid ""
+"These settings apply to every app. A host can change them for its apps (its "
+"⋮ menu → Host Settings…), and an app can change them for itself (Edit…). The "
+"app's own setting wins, then the host's, then these."
+msgstr ""
+
+#: obour/ui/preferences.py:35
+#, python-brace-format
+msgid ""
+"Colors, icons and fonts of your desktop ({desktop}), copied to each host once"
+msgstr ""
+
+#: obour/ui/preferences.py:40
+#, python-brace-format
+msgid ""
+"Show your cursor theme ({theme}) in remote apps. It's copied to each host "
+"once."
+msgstr ""
+
+#: obour/ui/preferences.py:44
+msgid "App Menu Preview"
+msgstr ""
+
+#: obour/ui/preferences.py:52 obour/ui/window.py:24 obour/ui/window.py:223
+msgid "Obour"
+msgstr ""
+
+#: obour/ui/preferences.py:53
+msgid "These apply to Obour itself, not per host or app."
+msgstr ""
+
+#: obour/ui/preferences.py:58
+msgid "Language"
+msgstr ""
+
+#: obour/ui/preferences.py:58
+msgid "Takes effect when Obour is opened again"
+msgstr ""
+
+#: obour/ui/preferences.py:59
+msgid "System Default"
+msgstr ""
+
+#: obour/ui/preferences.py:63
+msgid "Check New Hosts"
+msgstr ""
+
+#: obour/ui/preferences.py:64
+msgid ""
+"When you add apps from a new host, look for missing tools and offer to "
+"install them"
+msgstr ""
+
+#: obour/ui/preferences.py:83
+#, python-brace-format
+msgid "Renamed {count} app menu entry"
+msgid_plural "Renamed {count} app menu entries"
+msgstr[0] ""
+msgstr[1] ""
+
+#: obour/ui/preferences.py:89
+#, python-brace-format
+msgid "Ignored (no “=”): {words}"
+msgstr ""
+
+#: obour/ui/preferences.py:104
+msgid "Restart Obour to change the language"
+msgstr ""
+
+#: obour/ui/settings_rows.py:18
+msgid "Off"
+msgstr ""
+
+#: obour/ui/settings_rows.py:18
+msgid "On"
+msgstr ""
+
+#: obour/ui/settings_rows.py:20
+msgid "Display"
+msgstr ""
+
+#: obour/ui/settings_rows.py:20
+msgid "How windows are forwarded"
+msgstr ""
+
+#: obour/ui/settings_rows.py:21
+msgid "Wayland (waypipe, X11 fallback)"
+msgstr ""
+
+#: obour/ui/settings_rows.py:22
+msgid "X11 only (ssh -Y)"
+msgstr ""
+
+#: obour/ui/settings_rows.py:23
+msgid "Light or Dark Style"
+msgstr ""
+
+#: obour/ui/settings_rows.py:24
+msgid "Match This Computer follows your desktop's light or dark mode"
+msgstr ""
+
+#: obour/ui/settings_rows.py:25
+msgid "Dark"
+msgstr ""
+
+#: obour/ui/settings_rows.py:25
+msgid "Light"
+msgstr ""
+
+#: obour/ui/settings_rows.py:25
+msgid "Match This Computer"
+msgstr ""
+
+#: obour/ui/settings_rows.py:26
+msgid "Don't Change"
+msgstr ""
+
+#: obour/ui/settings_rows.py:27
+msgid "Use My Desktop Theme"
+msgstr ""
+
+#: obour/ui/settings_rows.py:28
+msgid "Your colors, icons and fonts, copied to the host once"
+msgstr ""
+
+#: obour/ui/settings_rows.py:29
+msgid "Qt Version"
+msgstr ""
+
+#: obour/ui/settings_rows.py:30
+msgid ""
+"For theming Qt apps. Automatic checks the program (and VLC's interface "
+"plugin)"
+msgstr ""
+
+#: obour/ui/settings_rows.py:33
+msgid "Use My Cursor"
+msgstr ""
+
+#: obour/ui/settings_rows.py:33
+msgid "Your cursor theme, copied to the host once"
+msgstr ""
+
+#: obour/ui/settings_rows.py:35
+msgid "Play the app's audio on this computer"
+msgstr ""
+
+#: obour/ui/settings_rows.py:35
+msgid "Sound"
+msgstr ""
+
+#: obour/ui/settings_rows.py:36
+msgid "Copy, Paste and Drag Files"
+msgstr ""
+
+#: obour/ui/settings_rows.py:37
+msgid "Copy or drag a file from one computer to the other"
+msgstr ""
+
+#: obour/ui/settings_rows.py:38
+msgid "Always Allow"
+msgstr ""
+
+#: obour/ui/settings_rows.py:38
+msgid "Ask Every Time"
+msgstr ""
+
+#: obour/ui/settings_rows.py:39
+msgid "Deny"
+msgstr ""
+
+#: obour/ui/settings_rows.py:40
+msgid "Separate Instance"
+msgstr ""
+
+#: obour/ui/settings_rows.py:41
+msgid "Open a new copy instead of a window of one already running on the host"
+msgstr ""
+
+#: obour/ui/settings_rows.py:43
+msgid "GPU Acceleration for Wayland Apps"
+msgstr ""
+
+#: obour/ui/settings_rows.py:44
+msgid ""
+"Faster for video and games, but some hosts freeze before the window appears. "
+"If that happens, Obour turns it off for that host by itself."
+msgstr ""
+
+#: obour/ui/settings_rows.py:47
+msgid "Try X11 When Wayland Fails"
+msgstr ""
+
+#: obour/ui/settings_rows.py:48
+msgid "If a Wayland app shows no window, open it again with X11 and tell you"
+msgstr ""
+
+#: obour/ui/settings_rows.py:50
+msgid "Compression for Wayland Apps"
+msgstr ""
+
+#: obour/ui/settings_rows.py:51
+msgid ""
+"LZ4 suits home networks; Zstandard the internet or slow Wi-Fi; H.264 video "
+"is smallest but needs GPU Acceleration"
+msgstr ""
+
+#: obour/ui/settings_rows.py:53
+msgid "None"
+msgstr ""
+
+#: obour/ui/settings_rows.py:54
+msgid "H.264 video"
+msgstr ""
+
+#: obour/ui/settings_rows.py:55
+msgid "Compress X11 Apps and Sound"
+msgstr ""
+
+#: obour/ui/settings_rows.py:56
+msgid "SSH compression (zlib). Helps on slow links, adds delay on fast ones"
+msgstr ""
+
+#: obour/ui/settings_rows.py:58
+msgid "Environment Variables"
+msgstr ""
+
+#: obour/ui/settings_rows.py:58
+msgid "KEY=value, separated by spaces"
+msgstr ""
+
+#: obour/ui/settings_rows.py:59
+msgid "App Menu Name"
+msgstr ""
+
+#: obour/ui/settings_rows.py:60
+#, python-brace-format
+msgid "Fields: {name} {host} {user} {address}"
+msgstr ""
+
+#: obour/ui/settings_rows.py:74
+msgid "Appearance"
+msgstr ""
+
+#: obour/ui/settings_rows.py:74
+msgid "Display and Performance"
+msgstr ""
+
+#: obour/ui/settings_rows.py:75
+msgid "Advanced"
+msgstr ""
+
+#: obour/ui/settings_rows.py:75
+msgid "Files and Sound"
+msgstr ""
+
+#: obour/ui/settings_rows.py:79
+msgid "from Preferences"
+msgstr ""
+
+#: obour/ui/settings_rows.py:79
+msgid "from the host"
+msgstr ""
+
+#: obour/ui/settings_rows.py:80
+msgid "from this app"
+msgstr ""
+
+#: obour/ui/settings_rows.py:113
+msgid "none"
+msgstr ""
+
+#: obour/ui/settings_rows.py:114
+#, python-brace-format
+msgid "{value}, {source}"
+msgstr ""
+
+#: obour/ui/settings_rows.py:125
+#, python-brace-format
+msgid "Changed for this app (otherwise: {inherited})"
+msgstr ""
+
+#: obour/ui/settings_rows.py:126
+#, python-brace-format
+msgid "Changed for this host (otherwise: {inherited})"
+msgstr ""
+
+#: obour/ui/settings_rows.py:129
+#, python-brace-format
+msgid "Inherited: {inherited}"
+msgstr ""
+
+#: obour/ui/settings_rows.py:145
+msgid "Inherit"
+msgstr ""
+
+#: obour/ui/settings_rows.py:169
+#, python-brace-format
+msgid "added to: {value}"
+msgstr ""
+
+#: obour/ui/settings_rows.py:170
+msgid "added to the inherited ones"
+msgstr ""
+
+#: obour/ui/settings_rows.py:172
+#, python-brace-format
+msgid "empty: {value}"
+msgstr ""
+
+#: obour/ui/settings_rows.py:243
+#, python-brace-format
+msgid "{count} setting changed for this app"
+msgid_plural "{count} settings changed for this app"
+msgstr[0] ""
+msgstr[1] ""
+
+#: obour/ui/settings_rows.py:246
+msgid "All inherited"
+msgstr ""
+
+#: obour/ui/window.py:64 obour/ui/window.py:69
+msgid "Add Apps from a Computer…"
+msgstr ""
+
+#: obour/ui/window.py:65 obour/ui/window.py:70
+msgid "Add an App by Its Command…"
+msgstr ""
+
+#: obour/ui/window.py:67
+msgid "Add Apps (Ctrl+N)"
+msgstr ""
+
+#: obour/ui/window.py:71
+msgid "Show Log"
+msgstr ""
+
+#: obour/ui/window.py:73
+msgid "Back Up…"
+msgstr ""
+
+#: obour/ui/window.py:74 obour/ui/window.py:97
+msgid "Restore From a Backup…"
+msgstr ""
+
+#: obour/ui/window.py:78
+msgid "About Obour"
+msgstr ""
+
+#: obour/ui/window.py:81
+msgid "Main Menu"
+msgstr ""
+
+#: obour/ui/window.py:87
+msgid "No Remote Apps Yet"
+msgstr ""
+
+#: obour/ui/window.py:88
+msgid ""
+"Pick apps from another Linux machine and run them here as normal windows, "
+"sound included."
+msgstr ""
+
+#: obour/ui/window.py:93
+msgid "Add Apps from a Computer"
+msgstr ""
+
+#: obour/ui/window.py:95
+msgid "Add an App by Its Command"
+msgstr ""
+
+#: obour/ui/window.py:104
+msgid "Add Apps from Another Computer"
+msgstr ""
+
+#: obour/ui/window.py:145
+msgid "Ready"
+msgstr ""
+
+#: obour/ui/window.py:148
+msgid "Show Log (Ctrl+L)"
+msgstr ""
+
+#: obour/ui/window.py:151
+msgid "Clear Log"
+msgstr ""
+
+#: obour/ui/window.py:224
+msgid ""
+"Obour (عبور) means “crossing”. Run apps from other Linux machines as native "
+"windows here, with sound."
+msgstr ""
+
+#: obour/ui/window.py:260
+#, python-brace-format
+msgid "Tailscale {address} (forced)"
+msgstr ""
+
+#: obour/ui/window.py:261
+#, python-brace-format
+msgid "Tailscale {address}"
+msgstr ""
+
+#: obour/ui/window.py:266
+#, python-brace-format
+msgid "Add Apps from {host}"
+msgstr ""
+
+#: obour/ui/window.py:269
+msgid "Add Apps…"
+msgstr ""
+
+#: obour/ui/window.py:270
+msgid "Host Settings…"
+msgstr ""
+
+#: obour/ui/window.py:271 obour/ui/window.py:561
+msgid "Set Up Host…"
+msgstr ""
+
+#: obour/ui/window.py:272
+msgid "Tailscale…"
+msgstr ""
+
+#: obour/ui/window.py:273
+msgid "Stop Sharing Files"
+msgstr ""
+
+#: obour/ui/window.py:274
+msgid "Share Files With This Host"
+msgstr ""
+
+#: obour/ui/window.py:275
+msgid "Test Connection"
+msgstr ""
+
+#: obour/ui/window.py:276
+msgid "Set Up Key Login…"
+msgstr ""
+
+#: obour/ui/window.py:279
+#, python-brace-format
+msgid "Options for {host}"
+msgstr ""
+
+#: obour/ui/window.py:295
+msgid "Edit…"
+msgstr ""
+
+#: obour/ui/window.py:296
+msgid "Remove from App Menu"
+msgstr ""
+
+#: obour/ui/window.py:298 obour/ui/window.py:386
+msgid "Remove"
+msgstr ""
+
+#: obour/ui/window.py:301
+msgid "More"
+msgstr ""
+
+#: obour/ui/window.py:302
+#, python-brace-format
+msgid "More options for {name}"
+msgstr ""
+
+#: obour/ui/window.py:320
+msgid "Stop"
+msgstr ""
+
+#: obour/ui/window.py:323
+msgid "Running"
+msgstr ""
+
+#: obour/ui/window.py:323
+msgid "Starting…"
+msgstr ""
+
+#: obour/ui/window.py:327
+msgid "Launch"
+msgstr ""
+
+#: obour/ui/window.py:329
+msgid "X11 (chosen automatically)"
+msgstr ""
+
+#: obour/ui/window.py:331
+msgid "In app menu"
+msgstr ""
+
+#: obour/ui/window.py:353
+#, python-brace-format
+msgid "Files can be copied and pasted with {host}"
+msgstr ""
+
+#: obour/ui/window.py:354
+#, python-brace-format
+msgid "Files won't be shared with {host}"
+msgstr ""
+
+#: obour/ui/window.py:363
+#, python-brace-format
+msgid "Added “{entry}” to the app menu"
+msgstr ""
+
+#: obour/ui/window.py:366
+#, python-brace-format
+msgid "Removed {name} from the app menu"
+msgstr ""
+
+#: obour/ui/window.py:374
+#, python-brace-format
+msgid "Couldn't update the app menu entry: {error}"
+msgstr ""
+
+#: obour/ui/window.py:382
+#, python-brace-format
+msgid "Remove {name}?"
+msgstr ""
+
+#: obour/ui/window.py:383
+msgid ""
+"It will also disappear from your app menu. Nothing is changed on the remote "
+"machine."
+msgstr ""
+
+#: obour/ui/window.py:396
+#, python-brace-format
+msgid "Removed {name}"
+msgstr ""
+
+#: obour/ui/window.py:405
+msgid "Obour Backups"
+msgstr ""
+
+#: obour/ui/window.py:414
+msgid "Back Up Obour"
+msgstr ""
+
+#: obour/ui/window.py:415
+msgid ""
+"Saves your apps (and which ones are in your app menu), hosts, settings, "
+"icons and what Obour learned about each host to one .zip file. Passwords are "
+"never saved."
+msgstr ""
+
+#: obour/ui/window.py:421
+msgid ""
+"With your SSH key, the backup can log in to your hosts by itself on a new "
+"computer, so keep it private."
+msgstr ""
+
+#: obour/ui/window.py:423
+msgid "Include SSH Key"
+msgstr ""
+
+#: obour/ui/window.py:424
+msgid "Back Up"
+msgstr ""
+
+#: obour/ui/window.py:436
+msgid "Save Backup"
+msgstr ""
+
+#: obour/ui/window.py:449
+#, python-brace-format
+msgid "Couldn't save the backup: {error}"
+msgstr ""
+
+#: obour/ui/window.py:451
+#, python-brace-format
+msgid "Backed up {count} app"
+msgid_plural "Backed up {count} apps"
+msgstr[0] ""
+msgstr[1] ""
+
+#: obour/ui/window.py:458
+msgid "Close the running apps first"
+msgstr ""
+
+#: obour/ui/window.py:473
+msgid "Restore From a Backup"
+msgstr ""
+
+#: obour/ui/window.py:476
+#, python-brace-format
+msgid "{count} app"
+msgid_plural "{count} apps"
+msgstr[0] ""
+msgstr[1] ""
+
+#: obour/ui/window.py:477
+#, python-brace-format
+msgid "{count} computer"
+msgid_plural "{count} computers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: obour/ui/window.py:479
+#, python-brace-format
+msgid "Backup from {date}: {apps} on {hosts}, {menu} in the app menu."
+msgstr ""
+
+#: obour/ui/window.py:482
+msgid "It includes an SSH key."
+msgstr ""
+
+#: obour/ui/window.py:483
+msgid ""
+"Your current apps and settings are replaced; Obour keeps a copy of them "
+"first."
+msgstr ""
+
+#: obour/ui/window.py:485
+msgid "Restore This Backup?"
+msgstr ""
+
+#: obour/ui/window.py:487
+msgid "Restore"
+msgstr ""
+
+#: obour/ui/window.py:502
+#, python-brace-format
+msgid "Couldn't restore the backup: {error}"
+msgstr ""
+
+#: obour/ui/window.py:512
+msgid "Restored"
+msgstr ""
+
+#: obour/ui/window.py:513
+msgid "Restored. Restart Obour to change the language."
+msgstr ""
+
+#: obour/ui/window.py:546
+#, python-brace-format
+msgid "Starting {name} from {host}…"
+msgstr ""
+
+#: obour/ui/window.py:592
+msgid "Connected; the app is running."
+msgstr ""
+
+#: obour/ui/window.py:594
+#, python-brace-format
+msgid "{name} works with X11, so Obour will open it with X11 from now on."
+msgstr ""
+
+#: obour/ui/window.py:596
+#, python-brace-format
+msgid "{name} is running from {host}"
+msgstr ""
+
+#: obour/ui/window.py:615
+#, python-brace-format
+msgid ""
+"Your desktop look on {host} isn't the one Obour copied there; it's copied "
+"again at the next launch."
+msgstr ""
+
+#: obour/ui/window.py:629
+#, python-brace-format
+msgid "{name} is using Wayland."
+msgstr ""
+
+#: obour/ui/window.py:630
+#, python-brace-format
+msgid ""
+"{name} doesn't support Wayland and is using X11 instead (through ssh -Y)."
+msgstr ""
+
+#: obour/ui/window.py:632
+#, python-brace-format
+msgid "{name} is using both Wayland and X11."
+msgstr ""
+
+#: obour/ui/window.py:636
+#, python-brace-format
+msgid "Obour will open {name} with X11 from now on."
+msgstr ""
+
+#: obour/ui/window.py:646
+msgid "To try Wayland again: Edit… → Try Wayland Again."
+msgstr ""
+
+#: obour/ui/window.py:656
+#, python-brace-format
+msgid ""
+"{name} showed no window within {seconds} seconds with GPU Acceleration, "
+"which freezes waypipe on some hosts. Obour turned it off for {host} and is "
+"trying Wayland again without it. (Turning GPU Acceleration off and on in "
+"Preferences tries it again.)"
+msgstr ""
+
+#: obour/ui/window.py:662
+#, python-brace-format
+msgid "{name}: retrying Wayland without GPU"
+msgstr ""
+
+#: obour/ui/window.py:665
+#, python-brace-format
+msgid "GPU Acceleration doesn't work on {host} — turned off there"
+msgstr ""
+
+#: obour/ui/window.py:667 obour/ui/window.py:684
+msgid "Details"
+msgstr ""
+
+#: obour/ui/window.py:682
+#, python-brace-format
+msgid "{name} didn't open over Wayland — using X11"
+msgstr ""
+
+#: obour/ui/window.py:704
+#, python-brace-format
+msgid "{name} showed no window over Wayland within {seconds} seconds."
+msgstr ""
+
+#: obour/ui/window.py:720
+msgid ""
+"The app exited right after starting. If no window appeared, check the "
+"messages above."
+msgstr ""
+
+#: obour/ui/window.py:722
+#, python-brace-format
+msgid "{name} exited right after starting"
+msgstr ""
+
+#: obour/ui/window.py:727
+#, python-brace-format
+msgid "Closed (exit code {code})."
+msgstr ""
+
+#: obour/ui/window.py:728 obour/ui/window.py:735
+#, python-brace-format
+msgid "{name} closed"
+msgstr ""
+
+#: obour/ui/window.py:733
+#, python-brace-format
+msgid "Session ended (exit code {code})."
+msgstr ""
+
+#: obour/ui/window.py:755
+#, python-brace-format
+msgid "Trying key login to {host}…"
+msgstr ""
+
+#: obour/ui/window.py:765
+#, python-brace-format
+msgid ""
+"Key login to {host} works, but the connection still failed. See the log."
+msgstr ""
+
+#: obour/ui/window.py:769
+#, python-brace-format
+msgid "Key login to {host} works; no password needed."
+msgstr ""
+
+#: obour/ui/window.py:771
+#, python-brace-format
+msgid "Connected to {host} with your key"
+msgstr ""
+
+#: obour/ui/window.py:785
+#, python-brace-format
+msgid "{host} needs a password"
+msgstr ""
+
+#: obour/ui/window.py:788
+#, python-brace-format
+msgid "Logging in to {host}…"
+msgstr ""
+
+#: obour/ui/window.py:789
+#, python-brace-format
+msgid "Logging in to {host} with a password and setting up key login…"
+msgstr ""
+
+#: obour/ui/window.py:790
+#, python-brace-format
+msgid "Logging in to {host} with a password…"
+msgstr ""
+
+#: obour/ui/window.py:799
+#, python-brace-format
+msgid "Logged in to {host}. Obour keeps the password until it quits."
+msgstr ""
+
+#: obour/ui/window.py:821
+#, python-brace-format
+msgid "Login to {host} cancelled"
+msgstr ""
+
+#: obour/ui/window.py:826
+#, python-brace-format
+msgid "Checking key login for {host}…"
+msgstr ""
+
+#: obour/ui/window.py:831 obour/ui/window.py:833
+#, python-brace-format
+msgid "Key login already works for {host}"
+msgstr ""
+
+#: obour/ui/window.py:868
+msgid "Which User?"
+msgstr ""
+
+#: obour/ui/window.py:869
+#, python-brace-format
+msgid ""
+"You entered {host} without a user name, so Obour would log in as “{user}”, "
+"your user on this computer. If your account on {host} has a different name, "
+"enter it here."
+msgstr ""
+
+#: obour/ui/window.py:872
+#, python-brace-format
+msgid "User name on {host}"
+msgstr ""
+
+#: obour/ui/window.py:878
+msgid "Continue"
+msgstr ""
+
+#: obour/ui/window.py:901
+#, python-brace-format
+msgid ""
+"A second address for {host}, for when you're away from its network. It "
+"applies to all apps from this host."
+msgstr ""
+
+#: obour/ui/window.py:914
+#, python-brace-format
+msgid "Saved Tailscale settings for {host}"
+msgstr ""
+
+#: obour/ui/window.py:930
+#, python-brace-format
+msgid "Checking what {host} has installed…"
+msgstr ""
+
+#: obour/ui/window.py:940
+#, python-brace-format
+msgid "Checked {host}"
+msgstr ""
+
+#: obour/ui/window.py:947
+#, python-brace-format
+msgid "Couldn't check {host}: {error}"
+msgstr ""
+
+#: obour/ui/window.py:955 obour/ui/window.py:956
+#, python-brace-format
+msgid "Testing connection to {host}…"
+msgstr ""
+
+#: obour/ui/window.py:963
+#, python-brace-format
+msgid "Connection to {host} works ({count} optional tool missing)"
+msgid_plural "Connection to {host} works ({count} optional tools missing)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: obour/ui/window.py:967 obour/ui/window.py:969
+#, python-brace-format
+msgid "Connection to {host} works"
+msgstr ""
+
+#: obour/ui/window.py:975
+#, python-brace-format
+msgid "Can't connect to {host}"
+msgstr ""
+
+#: obour/ui/window.py:1031
+msgid "Close Running Apps?"
+msgstr ""
+
+#: obour/ui/window.py:1032
+#, python-brace-format
+msgid "{count} remote app is still running. Closing Obour will close it too."
+msgid_plural ""
+"{count} remote apps are still running. Closing Obour will close them too."
+msgstr[0] ""
+msgstr[1] ""
+
+#: obour/ui/window.py:1037
+msgid "Close All"
+msgstr ""

@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+# Uses the system Python on purpose: PyGObject/GTK 4 come from the distro packages.
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+
+from obour.app import main  # noqa: E402
+
+sys.exit(main())

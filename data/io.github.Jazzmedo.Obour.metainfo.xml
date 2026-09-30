@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.Jazzmedo.Obour</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Obour</name>
+  <name xml:lang="ar">عبور</name>
+  <summary>Run apps from remote Linux machines as local windows</summary>
+  <summary xml:lang="ar">شغّل تطبيقات حواسيب لينكس البعيدة كنوافذ محلية</summary>
+  <developer id="io.github.jazzmedo">
+    <name>7anafi</name>
+  </developer>
+  <description>
+    <p>
+      Obour (عبور, “crossing”) opens individual apps from other Linux computers over SSH
+      so they appear as normal windows on your desktop, with sound. Wayland apps are
+      forwarded with waypipe and X11 apps with SSH X11 forwarding.
+    </p>
+    <ul>
+      <li>Browse a computer's installed apps and add them in one click</li>
+      <li>Sound through your local PipeWire or PulseAudio</li>
+      <li>Matches your light or dark style and your cursor theme</li>
+      <li>Checks each host for missing tools and offers to install them</li>
+      <li>Tailscale addresses, key login setup and app-menu entries</li>
+      <li>English and Arabic interface</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">io.github.Jazzmedo.Obour.desktop</launchable>
+  <provides>
+    <binary>obour</binary>
+  </provides>
+  <url type="homepage">https://github.com/Jazzmedo/Obour</url>
+  <url type="bugtracker">https://github.com/Jazzmedo/Obour/issues</url>
+  <url type="vcs-browser">https://github.com/Jazzmedo/Obour</url>
+  <content_rating type="oars-1.1"/>
+  <categories>
+    <category>Network</category>
+    <category>RemoteAccess</category>
+  </categories>
+  <releases>
+    <release version="0.1.0" date="2026-09-30"/>
+  </releases>
+</component>

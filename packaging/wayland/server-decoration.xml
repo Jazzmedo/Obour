@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Only the message signatures of KDE's server-decoration protocol (plasma-wayland-
+     protocols' server-decoration.xml), which Qt and mpv use on wlroots desktops. -->
+<protocol name="server_decoration">
+  <interface name="org_kde_kwin_server_decoration_manager" version="1">
+    <request name="create">
+      <arg name="id" type="new_id" interface="org_kde_kwin_server_decoration"/>
+      <arg name="surface" type="object" interface="wl_surface"/>
+    </request>
+    <event name="default_mode">
+      <arg name="mode" type="uint"/>
+    </event>
+  </interface>
+  <interface name="org_kde_kwin_server_decoration" version="1">
+    <request name="release" type="destructor"/>
+    <request name="request_mode">
+      <arg name="mode" type="uint"/>
+    </request>
+    <event name="mode">
+      <arg name="mode" type="uint"/>
+    </event>
+  </interface>
+</protocol>

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Obour
+Name[ar]=عبور
+GenericName=Remote Apps
+GenericName[ar]=تطبيقات عن بُعد
+Comment=Run apps from remote Linux machines as local windows
+Comment[ar]=شغّل تطبيقات حواسيب لينكس البعيدة كنوافذ محلية
+Exec=obour
+Icon=io.github.Jazzmedo.Obour
+Terminal=false
+Categories=Network;RemoteAccess;
+Keywords=remote;ssh;waypipe;x11;wayland;forwarding;
+Keywords[ar]=بعيد;عن بعد;ssh;waypipe;x11;wayland;تمرير;
+StartupNotify=true

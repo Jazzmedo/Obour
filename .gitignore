@@ -1,0 +1,6 @@
+dist/
+__pycache__/
+*.pyc
+result
+result-*
+packaging/appimage/__pycache__/

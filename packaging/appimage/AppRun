@@ -1,0 +1,29 @@
+#!/bin/sh
+# Obour AppImage entry point: run the bundled Python/GTK with the bundled data.
+HERE=${APPDIR:-$(dirname "$(readlink -f "$0")")}
+export OBOUR_APPDIR="$HERE"
+
+# Keep the user's values so Obour can restore them for programs it starts (ssh, waypipe…).
+for var in GI_TYPELIB_PATH GDK_PIXBUF_MODULE_FILE GIO_MODULE_DIR XDG_DATA_DIRS \
+           GTK_EXE_PREFIX GTK_DATA_PREFIX; do
+    eval "if [ -n \"\${$var+set}\" ]; then export OBOUR_ORIG_$var=\"\$$var\"; fi"
+done
+
+export GI_TYPELIB_PATH="$HERE/usr/lib/girepository-1.0"
+# Only bundled GIO/GTK modules: the host's are built against its own (newer) GLib/GTK.
+export GIO_MODULE_DIR="$HERE/usr/lib/gio/modules"
+export GTK_EXE_PREFIX="$HERE/usr"
+export GTK_DATA_PREFIX="$HERE/usr"
+# Host data first (icon theme, fonts, schemas), bundled data as fallback.
+export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}:$HERE/usr/share"
+
+# gdk-pixbuf needs absolute loader paths; the mount point differs on every run.
+tag=$(printf %s "$HERE" | cksum | cut -d' ' -f1)
+cache="${XDG_RUNTIME_DIR:-/tmp}/obour-pixbuf-$tag.cache"
+if [ ! -s "$cache" ]; then
+    sed "s|@APPDIR@|$HERE|g" "$HERE/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache.in" > "$cache.$$" \
+        && mv -f "$cache.$$" "$cache"
+fi
+export GDK_PIXBUF_MODULE_FILE="$cache"
+
+exec "$HERE/usr/bin/python3" -I "$HERE/usr/share/obour/bin/obour" "$@"
