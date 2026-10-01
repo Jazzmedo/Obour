@@ -69,8 +69,9 @@ else
     read -rp "${B}Release notes${R} (one line; empty = list of commits since $last_tag): " notes
 fi
 new_version=${tag#v}
+# Not marked as a GitHub pre-release even for -alpha/-beta tags: AppImage updates
+# (Gear Lever, AppImageUpdate) only look at the latest full release.
 prerelease=0
-[[ $new_version == *-* ]] && prerelease=1
 
 appimage="dist/Obour-$new_version-x86_64.AppImage"
 files=("$appimage" "$appimage.zsync" "dist/obour_${new_version}_all.deb"

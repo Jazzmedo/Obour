@@ -17,12 +17,14 @@ esac
 # shellcheck disable=SC2086
 "$ENGINE" run --rm -v "$ROOT:/src:Z" $OWNER "$IMAGE" sh -euc '
 VERSION=$(sed -n "s/^__version__ = \"\(.*\)\"/\1/p" /src/obour/__init__.py)
+# 0.1.0-alpha.1 -> 0.1.0~alpha.1: a pre-release sorts before 0.1.0 (and "-" means a revision)
+DEBVER=$(printf %s "$VERSION" | tr - "~")
 PKG=/build/obour_${VERSION}_all
 rm -rf /build && mkdir -p "$PKG/DEBIAN"
 sh /src/packaging/linux/stage.sh /src "$PKG"
 cat > "$PKG/DEBIAN/control" <<EOF
 Package: obour
-Version: $VERSION
+Version: $DEBVER
 Architecture: all
 Maintainer: 7anafi <https://github.com/Jazzmedo/Obour>
 Section: net

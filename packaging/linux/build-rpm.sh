@@ -17,13 +17,17 @@ esac
 "$ENGINE" run --rm -v "$ROOT:/src:Z" $OWNER "$IMAGE" sh -euc '
 dnf -q -y install rpm-build >/dev/null 2>&1 || dnf -y install rpm-build
 VERSION=$(sed -n "s/^__version__ = \"\(.*\)\"/\1/p" /src/obour/__init__.py)
+# rpm versions can't have "-"; "~" makes 0.1.0~alpha.1 sort before 0.1.0
+RPMVER=$(printf %s "$VERSION" | tr - "~")
 # Without %{dist}: one package for every Fedora/openSUSE/RHEL release.
 rpmbuild -bb --quiet --define "_topdir /build" --define "source_date_epoch_from_changelog 0" --define "dist %{nil}" \
-    --define "obour_version $VERSION" --define "obour_src /src" \
+    --define "obour_version $RPMVER" --define "obour_src /src" \
     /src/packaging/linux/obour.spec
 for f in /build/RPMS/noarch/*.rpm; do
-    cp "$f" /src/dist/
-    [ -z "${HOST_UID:-}" ] || chown "$HOST_UID:$HOST_GID" "/src/dist/$(basename "$f")"
+    # named with the tag's form (no "~", which GitHub release assets can't keep)
+    out=/src/dist/$(basename "$f" | tr "~" -)
+    cp "$f" "$out"
+    [ -z "${HOST_UID:-}" ] || chown "$HOST_UID:$HOST_GID" "$out"
 done
 '
 ls -lh "$ROOT"/dist/*.rpm

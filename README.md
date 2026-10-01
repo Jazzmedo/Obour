@@ -13,6 +13,15 @@
   <b>English</b> · <a href="README.ar.md">العربية</a>
 </p>
 
+> [!WARNING]
+> **Obour is in alpha.** So far it has only been tested with **Ubuntu Server 26.04** as the
+> remote computer and **Hyprland** as the desktop. Expect bugs, especially on other
+> distributions and desktops.
+>
+> **We need your testing and contributions to fix the app.** If something doesn't work,
+> [open an issue](https://github.com/Jazzmedo/Obour/issues/new/choose) with your setup and
+> the log, or send a pull request (see [CONTRIBUTING.md](CONTRIBUTING.md)).
+
 **Obour** (عبور, "crossing") opens single apps from another Linux computer as normal windows
 on your desktop. They move, resize and tile like local apps, and their sound plays on your
 speakers. Pick an app, press play, done.
