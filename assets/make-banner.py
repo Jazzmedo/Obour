@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Draw assets/banner.svg for the README: the logo, the name and what Obour does
-on a gradient.
+"""Draw assets/banner.svg for the README: the logo, the name and what Obour does,
+as a pedestrian crossing (عبور) on asphalt.
 
 Text is turned into outlines (Pango shapes the Arabic, cairo writes paths), so the
 banner looks the same on every computer without the fonts installed.
@@ -141,29 +141,42 @@ FEATURES = [
 ]
 
 
-def chip(cr, x, y, label, icon):
-    """A rounded pill with an icon and a label; returns its width."""
-    layout = PangoCairo.create_layout(cr)
-    layout.set_font_description(Pango.FontDescription.from_string("Poppins Medium 18px"))
-    layout.set_text(label, -1)
-    _ink, logical = layout.get_pixel_extents()
-    h = 44
-    w = 16 + 20 + 10 + logical.width + 18
-    rounded_rect(cr, x, y, w, h, h / 2)
-    cr.set_source_rgba(1, 1, 1, 0.14)
-    cr.fill_preserve()
-    cr.set_source_rgba(1, 1, 1, 0.22)
-    cr.set_line_width(1)
-    cr.stroke()
-    cr.set_source_rgba(1, 1, 1, 0.95)
+# Colors: an asphalt road and its markings. "Obour" (عبور) is the word painted on
+# pedestrian crossings, so the banner is a crossing: one warm accent, no gradients.
+ASPHALT = (0x1b / 255, 0x1d / 255, 0x20 / 255)
+STRIPE = (0xe8 / 255, 0xe4 / 255, 0xda / 255)     # road paint, off-white
+AMBER = (0xf2 / 255, 0xb1 / 255, 0x34 / 255)      # road-marking yellow
+TEXT = (0xf1 / 255, 0xee / 255, 0xe7 / 255)
+MUTED = (0xb8 / 255, 0xb3 / 255, 0xa8 / 255)
+
+
+def feature(cr, x, y, label, icon):
+    """An icon in the accent color and its label; returns the width used."""
+    cr.set_source_rgb(*AMBER)
     cr.set_line_width(1.8)
     cr.set_line_cap(cairo.LINE_CAP_ROUND)
     cr.set_line_join(cairo.LINE_JOIN_ROUND)
-    icon(cr, x + 16, y + (h - 20) / 2)
-    cr.move_to(x + 46, y + (h - logical.height) / 2)
+    icon(cr, x, y + 3)
+    layout = PangoCairo.create_layout(cr)
+    layout.set_font_description(Pango.FontDescription.from_string("Poppins 19px"))
+    layout.set_text(label, -1)
+    _ink, logical = layout.get_pixel_extents()
+    cr.move_to(x + 30, y + 13 - logical.height / 2)
+    cr.set_source_rgb(*TEXT)
     PangoCairo.layout_path(cr, layout)
     cr.fill()
-    return w
+    return 30 + logical.width
+
+
+def crossing(cr, x0, x1, top, bottom):
+    """Zebra-crossing bars, seen from above, worn at the ends."""
+    width, gap = 34, 30
+    x = x0
+    while x + width <= x1:
+        cr.rectangle(x, top, width, bottom - top)
+        x += width + gap
+    cr.set_source_rgba(*STRIPE, 0.07)
+    cr.fill()
 
 
 def main():
@@ -171,45 +184,36 @@ def main():
     surface.set_document_unit(cairo.SVGUnit.PX)
     cr = cairo.Context(surface)
 
-    # background: deep indigo -> violet -> pink
-    grad = cairo.LinearGradient(0, 0, W, H)
-    grad.add_color_stop_rgb(0.0, 0x1e / 255, 0x1b / 255, 0x4b / 255)
-    grad.add_color_stop_rgb(0.45, 0x5b / 255, 0x21 / 255, 0xb6 / 255)
-    grad.add_color_stop_rgb(1.0, 0xdb / 255, 0x27 / 255, 0x77 / 255)
     rounded_rect(cr, 0, 0, W, H, RADIUS)
-    cr.set_source(grad)
-    cr.fill()
+    cr.set_source_rgb(*ASPHALT)
+    cr.fill_preserve()
+    cr.clip()
 
-    # soft glow behind the logo
-    cy = H / 2
-    glow = cairo.RadialGradient(190, cy, 10, 190, cy, 200)
-    glow.add_color_stop_rgba(0, 1, 1, 1, 0.15)
-    glow.add_color_stop_rgba(1, 1, 1, 1, 0)
-    cr.set_source(glow)
-    cr.arc(190, cy, 200, 0, 6.2832)
-    cr.fill()
+    # the crossing runs under the logo: from one computer to the other, like its arrow
+    crossing(cr, 30, 340, 0, H)
 
     # logo, as vectors
+    cy = H / 2
     logo = Rsvg.Handle.new_from_file(LOGO)
     viewport = Rsvg.Rectangle()
-    viewport.x, viewport.y, viewport.width, viewport.height = 55, cy - 135, 270, 270
+    viewport.x, viewport.y, viewport.width, viewport.height = 55, cy - 130, 260, 260
     logo.render_document(cr, viewport)
 
     # name, Arabic name and tagline
-    x = 350
-    width, _h = text(cr, x, 34, "Obour", "Poppins SemiBold 76px")
-    text(cr, x + width + 28, 54, "عبور", "IBM Plex Sans Arabic Bold 52px",
-         rgba=(1, 1, 1, 0.8), rtl=True)
-    text(cr, x + 4, 146, "Open apps from your other Linux machines as native windows.",
-         "Poppins 26px", rgba=(1, 1, 1, 0.92))
+    x = 372
+    width, _h = text(cr, x, 30, "Obour", "Poppins SemiBold 76px", rgba=(*TEXT, 1))
+    text(cr, x + width + 26, 50, "عبور", "IBM Plex Sans Arabic Bold 52px",
+         rgba=(*AMBER, 1), rtl=True)
+    text(cr, x + 4, 140, "Open apps from your other Linux machines as native windows.",
+         "Poppins 25px", rgba=(*MUTED, 1))
 
-    # what it does
-    y = 206
+    # what it does: two quiet rows, no boxes
+    y = 204
     for row in FEATURES:
         cx = x + 4
         for label, icon in row:
-            cx += chip(cr, cx, y, label, icon) + 12
-        y += 56
+            cx += feature(cr, cx, y, label, icon) + 34
+        y += 46
 
     surface.finish()
     print(OUT)
