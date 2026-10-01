@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """Draw assets/banner.svg for the README: the logo, the name and what Obour does,
-as a pedestrian crossing (عبور) on asphalt.
+as a pedestrian crossing on asphalt.
 
-Text is turned into outlines (Pango shapes the Arabic, cairo writes paths), so the
+Text is turned into outlines (Pango lays them out, cairo writes paths), so the
 banner looks the same on every computer without the fonts installed.
-Needs: Poppins and IBM Plex Sans Arabic fonts, PyGObject with Pango and Rsvg.
+Needs: the Poppins font, PyGObject with Pango and Rsvg.
 Run: assets/make-banner.py"""
 
 import os
@@ -141,8 +141,9 @@ FEATURES = [
 ]
 
 
-# Colors: an asphalt road and its markings. "Obour" (عبور) is the word painted on
-# pedestrian crossings, so the banner is a crossing: one warm accent, no gradients.
+# Colors: an asphalt road and its markings. "Obour" means crossing in Arabic, the word
+# painted on pedestrian crossings, so the banner is a crossing: one warm accent, no
+# gradients. The same values, with hex codes, are in assets/PALETTE.md.
 ASPHALT = (0x1b / 255, 0x1d / 255, 0x20 / 255)
 STRIPE = (0xe8 / 255, 0xe4 / 255, 0xda / 255)     # road paint, off-white
 AMBER = (0xf2 / 255, 0xb1 / 255, 0x34 / 255)      # road-marking yellow
@@ -199,11 +200,9 @@ def main():
     viewport.x, viewport.y, viewport.width, viewport.height = 55, cy - 130, 260, 260
     logo.render_document(cr, viewport)
 
-    # name, Arabic name and tagline
+    # name and tagline
     x = 372
-    width, _h = text(cr, x, 30, "Obour", "Poppins SemiBold 76px", rgba=(*TEXT, 1))
-    text(cr, x + width + 26, 50, "عبور", "IBM Plex Sans Arabic Bold 52px",
-         rgba=(*AMBER, 1), rtl=True)
+    text(cr, x, 30, "Obour", "Poppins SemiBold 76px", rgba=(*TEXT, 1))
     text(cr, x + 4, 140, "Open apps from your other Linux machines as native windows.",
          "Poppins 25px", rgba=(*MUTED, 1))
 

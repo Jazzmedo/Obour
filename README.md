@@ -22,7 +22,7 @@
 > [open an issue](https://github.com/Jazzmedo/Obour/issues/new/choose) with your setup and
 > the log, or send a pull request (see [CONTRIBUTING.md](CONTRIBUTING.md)).
 
-**Obour** (عبور, "crossing") opens single apps from another Linux computer as normal windows
+**Obour** (means crossing in Arabic) opens single apps from another Linux computer as normal windows
 on your desktop. They move, resize and tile like local apps, and their sound plays on your
 speakers. Pick an app, press play, done.
 
