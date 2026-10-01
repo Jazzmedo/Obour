@@ -9,7 +9,7 @@ APP_ID=io.github.Jazzmedo.Obour
 SHARE=$DEST/usr/share
 
 install -d "$SHARE/obour/bin" "$DEST/usr/bin" "$SHARE/applications" \
-    "$SHARE/icons/hicolor/scalable/apps" "$SHARE/metainfo" "$SHARE/doc/obour"
+    "$SHARE/icons/hicolor/scalable/apps" "$SHARE/metainfo" "$SHARE/doc/obour" "$SHARE/man/man1"
 
 # The Python package with its helper script and translations (read as .po, no
 # compile step), without caches. Executable files keep their mode.
@@ -30,5 +30,6 @@ chmod 755 "$DEST/usr/bin/obour"
 install -m 644 "$SRC/data/$APP_ID.desktop" "$SHARE/applications/$APP_ID.desktop"
 install -m 644 "$SRC/data/$APP_ID.svg" "$SHARE/icons/hicolor/scalable/apps/$APP_ID.svg"
 install -m 644 "$SRC/data/$APP_ID.metainfo.xml" "$SHARE/metainfo/$APP_ID.metainfo.xml"
+install -m 644 "$SRC/data/obour.1" "$SHARE/man/man1/obour.1"
 install -m 644 "$SRC/README.md" "$SHARE/doc/obour/README.md"
 [ ! -f "$SRC/LICENSE" ] || install -m 644 "$SRC/LICENSE" "$SHARE/doc/obour/LICENSE"

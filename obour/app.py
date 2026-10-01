@@ -1,7 +1,9 @@
-"""Entry point: `obour` opens the GUI, `obour launch <id>` starts one app headlessly."""
+"""Entry point: `obour` opens the GUI; subcommands (see `obour --help`) work without it."""
 
 from __future__ import annotations
 
+import argparse
+import json
 import os
 import shutil
 import subprocess
@@ -12,21 +14,6 @@ from collections import deque
 from . import APP_ID, APP_NAME, __version__
 from .hostenv import host_env
 from .i18n import _, ngettext
-
-USAGE = f"""\
-{APP_NAME} {__version__} — run apps from remote Linux machines as local windows.
-
-usage:
-  obour                 open the window
-  obour launch <id>     start a saved app (used by app-menu entries)
-  obour list            print saved apps and their ids
-  obour backup <file.zip> [--with-ssh-key]
-                        save apps, hosts, settings and app-menu entries
-  obour restore <file.zip>
-                        replace them with a backup's (the current ones are kept
-                        in ~/.local/share/obour/backups)
-"""
-
 
 def _notify(title: str, body: str) -> None:
     print(f"{title}: {body}", file=sys.stderr)
@@ -198,10 +185,70 @@ def _needs_password(host: str) -> str:
         host=host)
 
 
-def list_launchers() -> int:
+def find_launcher(store, key: str):
+    """An app by id, or by name when the name is unique (case doesn't matter)."""
+    launcher = store.get(key)
+    if launcher:
+        return launcher
+    matches = [l for l in store.launchers if l.name.casefold() == key.casefold()]
+    if len(matches) == 1:
+        return matches[0]
+    if matches:
+        print(f"{key}: more than one app has this name; use its id:", file=sys.stderr)
+        for l in matches:
+            print(f"  {l.id}  {l.host}", file=sys.stderr)
+    else:
+        print(f"{key}: no saved app has this id or name (see: obour list)", file=sys.stderr)
+    return None
+
+
+def list_launchers(as_json: bool) -> int:
+    from dataclasses import asdict
     from .config import Store
-    for l in Store().launchers:
-        print(f"{l.id}  {l.name}  ({l.host}: {l.exec})")
+    launchers = Store().launchers
+    if as_json:
+        print(json.dumps([asdict(l) for l in launchers], indent=2, ensure_ascii=False))
+    for l in [] if as_json else launchers:
+        print(f"{l.id}  {l.name}  ({l.host}: {l.exec}){'  [menu]' if l.in_menu else ''}")
+    return 0
+
+
+def list_hosts() -> int:
+    from collections import Counter
+    from .config import Store
+    for host, n in Counter(l.host for l in Store().launchers).items():
+        print(f"{host}  ({n} app{'s' if n != 1 else ''})")
+    return 0
+
+
+def add_cli(host: str, command: str, name: str | None, menu: bool) -> int:
+    from . import desktop
+    from .config import Launcher, Store
+    if not command.strip():
+        print("The command is empty.", file=sys.stderr)
+        return 2
+    name = name or os.path.basename(command.split()[0])
+    launcher = Launcher(host=host, exec=command, name=name, in_menu=menu)
+    Store().upsert(launcher)
+    try:
+        desktop.sync(launcher)
+    except OSError as e:
+        print(f"Saved, but the app menu entry couldn't be written: {e}", file=sys.stderr)
+    print(launcher.id)
+    return 0
+
+
+def remove_cli(key: str) -> int:
+    from . import desktop
+    from .config import Store
+    store = Store()
+    launcher = find_launcher(store, key)
+    if launcher is None:
+        return 1
+    desktop.remove(launcher.id)
+    desktop.remove_icon(launcher.id)
+    store.remove(launcher.id)
+    print(f"Removed {launcher.name} ({launcher.host})")
     return 0
 
 
@@ -273,34 +320,83 @@ def restore_cli(path: str) -> int:
     return 0
 
 
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="obour",
+        description=f"{APP_NAME} {__version__}: run apps from other Linux computers as "
+                    "windows on this desktop, over SSH. Without a command, opens the window.",
+        epilog="Apps are found by id or by name. More: man obour")
+    parser.add_argument("-v", "--version", action="version", version=__version__)
+    sub = parser.add_subparsers(dest="cmd", metavar="<command>")
+    p = sub.add_parser("list", help="print saved apps and their ids",
+                       description="Print each saved app: id, name, computer and command.")
+    p.add_argument("--json", action="store_true", help="print every field, as JSON")
+    sub.add_parser("hosts", help="print the computers you saved apps for",
+                   description="Print each computer that has saved apps, and how many.")
+    p = sub.add_parser("launch", help="start a saved app",
+                       description="Start a saved app without opening the window, as app-menu "
+                                   "entries do. Problems are shown as notifications.")
+    p.add_argument("app", help="the app's id or name")
+    p = sub.add_parser("add", help="save a new app",
+                       description="Save an app that runs COMMAND on HOST. Settings start as "
+                                   "\"inherit\"; change them in the window. Prints the new id.")
+    p.add_argument("host", help="the other computer: user@host or a name from ~/.ssh/config")
+    p.add_argument("command", help="the command to run there; quote it if it has spaces")
+    p.add_argument("--name", help="the name to show (default: the command's first word)")
+    p.add_argument("--menu", action="store_true", help="also add it to this desktop's app menu")
+    p = sub.add_parser("remove", help="delete a saved app",
+                       description="Delete a saved app and its app-menu entry.")
+    p.add_argument("app", help="the app's id or name")
+    p = sub.add_parser("backup", help="save apps, computers and settings to a .zip",
+                       description="Save apps, computers, settings and app-menu entries to a "
+                                   ".zip file. Passwords are never saved.")
+    p.add_argument("file", help="the .zip file to write")
+    p.add_argument("--with-ssh-key", action="store_true",
+                   help="include your SSH key from ~/.ssh; keep that file private")
+    p = sub.add_parser("restore", help="replace apps, computers and settings with a backup's",
+                       description="Replace apps, computers and settings with a backup's. The "
+                                   "current ones are kept in ~/.local/share/obour/backups.")
+    p.add_argument("file", help="the .zip file made by obour backup")
+    p = sub.add_parser("help", help="show help for a command",
+                       description="Show help for a command, or this list.")
+    p.add_argument("command", nargs="?", help="the command to explain")
+    return parser
+
+
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv if argv is None else argv)
-    args = argv[1:]
     # Before anything that shows text: some modules translate labels at import time.
     from . import i18n
     from .config import Settings
     i18n.setup(Settings.load().language)
-    if args and args[0] in ("-h", "--help", "help"):
-        print(USAGE)
-        return 0
-    if args and args[0] in ("-v", "--version"):
-        print(__version__)
-        return 0
-    if args and args[0] == "launch":
-        if len(args) != 2:
-            print(USAGE, file=sys.stderr)
-            return 2
-        return headless_launch(args[1])
-    if args and args[0] == "list":
-        return list_launchers()
-    if args and args[0] == "backup" and len(args) in (2, 3) and args[2:] in ([], ["--with-ssh-key"]):
-        return backup_cli(args[1], include_key=len(args) == 3)
-    if args and args[0] == "restore" and len(args) == 2:
-        return restore_cli(args[1])
-    if args and args[0] == "share-daemon":
+    if argv[1:] == ["share-daemon"]:  # internal: started by file sharing, not listed
         from .share import Daemon
         return Daemon().serve()
-    if args:
-        print(USAGE, file=sys.stderr)
-        return 2
+    parser = build_parser()
+    args = parser.parse_args(argv[1:])
+    if args.cmd == "help":
+        if args.command is None:
+            parser.print_help()
+            return 0
+        return main(argv[:1] + [args.command, "--help"])
+    if args.cmd == "list":
+        return list_launchers(args.json)
+    if args.cmd == "hosts":
+        return list_hosts()
+    if args.cmd == "launch":
+        from .config import Store
+        store = Store()
+        launcher = find_launcher(store, args.app)
+        if launcher is None and not any(l.name.casefold() == args.app.casefold()
+                                        for l in store.launchers):
+            return headless_launch(args.app)  # notifies, for a menu entry of a deleted app
+        return headless_launch(launcher.id) if launcher else 1
+    if args.cmd == "add":
+        return add_cli(args.host, args.command, args.name, args.menu)
+    if args.cmd == "remove":
+        return remove_cli(args.app)
+    if args.cmd == "backup":
+        return backup_cli(args.file, include_key=args.with_ssh_key)
+    if args.cmd == "restore":
+        return restore_cli(args.file)
     return run_gui(argv)

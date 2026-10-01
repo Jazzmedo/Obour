@@ -33,6 +33,7 @@
               install -Dm644 data/io.github.Jazzmedo.Obour.desktop -t $out/share/applications
               install -Dm644 data/io.github.Jazzmedo.Obour.svg -t $out/share/icons/hicolor/scalable/apps
               install -Dm644 data/io.github.Jazzmedo.Obour.metainfo.xml -t $out/share/metainfo
+              install -Dm644 data/obour.1 -t $out/share/man/man1
               runHook postInstall
             '';
 

@@ -1,0 +1,123 @@
+.TH OBOUR 1 "2026-10-01" "Obour" "User Commands"
+.SH NAME
+obour \- run apps from other Linux computers as windows on this desktop
+.SH SYNOPSIS
+.B obour
+.br
+.B obour
+.I command
+.RI [ options ]
+.SH DESCRIPTION
+.B Obour
+opens apps that are installed on another Linux computer as normal windows on
+your desktop, over SSH, with their sound on your speakers.
+Wayland apps go through
+.BR waypipe (1),
+others through X11 forwarding.
+.PP
+Without a command, Obour opens its window.
+The commands below work without it, for scripts and the terminal.
+Wherever a command takes an
+.IR app ,
+give the app's id (see
+.BR "obour list" )
+or its name; the name must be unique, and case does not matter.
+.SH COMMANDS
+.TP
+.BR list " [" \-\-json ]
+Print each saved app: id, name, computer and command.
+Apps in the app menu are marked
+.BR [menu] .
+With
+.BR \-\-json ,
+print every field of every app as JSON.
+.TP
+.B hosts
+Print each computer that has saved apps, and how many.
+.TP
+.BI launch " app"
+Start a saved app without opening the window, as app-menu entries do.
+Problems are shown as desktop notifications.
+.TP
+.BI add " host command" " \fR[\fB\-\-name\fR \fIname\fR] [\fB\-\-menu\fR]"
+Save an app that runs
+.I command
+on
+.IR host ,
+and print its new id.
+.I host
+is
+.I user@host
+or a
+.B Host
+from
+.IR ~/.ssh/config .
+Quote
+.I command
+if it has spaces.
+The name defaults to the command's first word.
+.B \-\-menu
+also adds the app to this desktop's app menu.
+Its settings start as
+.IR inherit ;
+change them in the window.
+.TP
+.BI remove " app"
+Delete a saved app and its app-menu entry.
+.TP
+.BI backup " file.zip" " \fR[\fB\-\-with\-ssh\-key\fR]"
+Save apps, computers, settings and app-menu entries to
+.IR file.zip .
+Passwords are never saved.
+.B \-\-with\-ssh\-key
+also saves your SSH key from
+.IR ~/.ssh ;
+keep that file private.
+.TP
+.BI restore " file.zip"
+Replace apps, computers and settings with the backup's.
+The current ones are kept in
+.IR ~/.local/share/obour/backups .
+.TP
+.BR help " [" \fIcommand\fR ]
+Show help for a command, or the list of commands.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Show help; after a command, that command's help.
+.TP
+.BR \-v ", " \-\-version
+Print the version.
+.SH EXIT STATUS
+0 on success, 1 when the app, file or computer could not be used,
+2 when the command line is wrong.
+.SH FILES
+.TP
+.I ~/.config/obour/
+Saved apps
+.RI ( launchers.json ),
+computers
+.RI ( hosts.json )
+and settings
+.RI ( settings.json ).
+.TP
+.I ~/.local/share/obour/
+Icons, and the backups kept by
+.BR restore .
+.TP
+.I ~/.local/share/applications/obour\-*.desktop
+App-menu entries.
+.SH EXAMPLES
+.nf
+obour add me@server firefox \-\-menu
+obour add laptop "gimp \-n" \-\-name "GIMP (laptop)"
+obour launch firefox
+obour list \-\-json | jq \-r '.[].name'
+obour backup ~/obour.zip
+.fi
+.SH SEE ALSO
+.BR ssh (1),
+.BR waypipe (1),
+.BR sshfs (1)
+.PP
+https://jazzmedo.github.io/Obour/

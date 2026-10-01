@@ -36,4 +36,5 @@ sh %{obour_src}/packaging/linux/stage.sh %{obour_src} %{buildroot}
 %{_datadir}/applications/io.github.Jazzmedo.Obour.desktop
 %{_datadir}/icons/hicolor/scalable/apps/io.github.Jazzmedo.Obour.svg
 %{_datadir}/metainfo/io.github.Jazzmedo.Obour.metainfo.xml
+%{_mandir}/man1/obour.1*
 %doc %{_datadir}/doc/obour/
