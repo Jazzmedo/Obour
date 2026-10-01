@@ -4,3 +4,6 @@ __pycache__/
 result
 result-*
 packaging/appimage/__pycache__/
+
+# the full Thmanyah family; the site uses the copies in docs/fonts/
+assets/thmanyah typeface/

@@ -20,6 +20,8 @@
 **Obour** (means crossing in Arabic) opens apps from another Linux computer as normal windows on
 your desktop, with their sound on your speakers. Pick an app, press play, done.
 
+**Website:** [jazzmedo.github.io/Obour](https://jazzmedo.github.io/Obour/)
+
 <p align="center">
   <img src="assets/screenshot-apps.png" alt="Obour's main window: the apps of one computer, each with the display it uses" width="49%">
   <img src="assets/screenshot-edit.png" alt="Editing an app: host, command, icon and its own settings" width="49%">

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obour</title>
+<meta name="description" content="Open apps from your other Linux machines as native windows: sound, files and your theme cross over too.">
+<link rel="icon" href="img/logo.svg">
+<link rel="preload" href="fonts/thmanyahseriftext-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/TextPlugin.min.js" defer></script>
+<script src="main.js" defer></script>
+</head>
+<body>
+
+
+<main>
+
+<!-- 1. Hero: a zebra crossing, in parallax -->
+<section id="hero" class="hero">
+  <div class="hero-stripes" aria-hidden="true"></div>
+  <img class="hero-logo" src="img/logo.svg" alt="" width="260" height="260">
+  <div class="hero-text">
+    <p class="badge" data-i18n="hero.alpha">Alpha</p>
+    <h1 data-i18n="hero.title">Obour</h1>
+    <p class="means" data-i18n="hero.means">means “crossing” in Arabic</p>
+    <p class="tagline" data-i18n="hero.tagline">Open apps from your other Linux machines as native windows.</p>
+    <p class="links"><a class="button" href="#install" data-i18n="hero.cta">Get Obour</a>
+    <a class="button ghost" href="https://github.com/Jazzmedo/Obour">GitHub</a></p>
+  </div>
+  <p class="hint" data-i18n="hero.hint">Scroll to watch an app cross over</p>
+</section>
+
+<!-- 2–3. The story: two computers, one crossing -->
+<section id="story" class="story">
+  <div class="stage" aria-hidden="true">
+    <div class="pc remote">
+      <div class="screen">
+        <div class="icons"><i></i><i></i><i></i><i></i></div>
+        <svg class="file" viewBox="0 0 24 30" width="30" height="38"><path d="M2 2h13l7 7v19H2z" fill="#E8E4DA"/><path d="M15 2v7h7" fill="none" stroke="#1B1D20" stroke-width="1.5"/></svg>
+      </div>
+      <p class="pc-label" data-i18n="stage.remote">Another computer</p>
+    </div>
+    <div class="road"><span class="road-label">SSH</span><span class="road-mode">waypipe · X11</span></div>
+    <div class="pc local">
+      <div class="screen">
+        <div class="win">
+          <div class="bar"><b></b><b></b><b></b></div>
+          <div class="win-body">
+            <svg class="waves" viewBox="0 0 60 40" width="60" height="40"><path d="M10 14h6l8-7v26l-8-7h-6z" fill="currentColor"/><path class="w" d="M32 13a9 9 0 0 1 0 14"/><path class="w" d="M38 8a16 16 0 0 1 0 24"/><path class="w" d="M44 3a23 23 0 0 1 0 34"/></svg>
+          </div>
+        </div>
+      </div>
+      <p class="pc-label" data-i18n="stage.local">Your desktop</p>
+    </div>
+  </div>
+
+  <ol class="captions">
+    <li><h2 data-i18n="s0.h">Your apps live on another computer.</h2><p data-i18n="s0.p">A server in the closet, a workstation at the office, an old laptop. Obour brings their apps to the desktop you're sitting at.</p></li>
+    <li><h2 data-i18n="s1.h">It connects over SSH.</h2><p data-i18n="s1.p">No remote desktop, no extra server: just the SSH login you already have.</p></li>
+    <li><h2 data-i18n="s2.h">An app crosses over.</h2><p data-i18n="s2.p">It arrives as a normal window that moves, resizes and tiles like a local app. Wayland apps travel through waypipe, older X11 apps through SSH. Obour picks the right one for you.</p></li>
+    <li><h2 data-i18n="s3.h">Its sound comes too.</h2><p data-i18n="s3.p">Audio plays on your speakers, over the same connection.</p></li>
+    <li><h2 data-i18n="s4.h">Files cross both ways.</h2><p data-i18n="s4.p">Drag a file into a remote app, or copy it there and paste it here.</p></li>
+    <li><h2 data-i18n="s5.h">And it wears your theme.</h2><p data-i18n="s5.p">Your colors, icons, fonts and cursor, in GTK, Qt and KDE apps alike.</p></li>
+  </ol>
+</section>
+
+<!-- 4. Real screenshots, driving in on a road -->
+<section id="screens" class="screens">
+  <h2 data-i18n="screens.h">This is what it looks like.</h2>
+  <div class="shots">
+    <img src="img/screenshot-apps.png" alt="Obour's main window: one computer's apps, each with the display it uses" data-i18n-alt="screens.a1" width="923" height="1024" loading="lazy">
+    <img src="img/screenshot-edit.png" alt="Editing an app: host, command, icon and its own settings" data-i18n-alt="screens.a2" width="923" height="1024" loading="lazy">
+  </div>
+  <div class="road-strip" aria-hidden="true"><span class="lane"></span></div>
+</section>
+
+<!-- 5. Features: two lanes, icons drawn like road paint -->
+<section id="features" class="features">
+  <h2 data-i18n="features.h">Everything else you'd expect.</h2>
+  <div class="groups">
+    <div class="group">
+      <span class="lane-v" aria-hidden="true"></span>
+      <h3 data-i18n="features.g1">Connecting</h3>
+      <ul>
+      <li><svg class="icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><strong data-i18n="f2.h">Host setup</strong><span data-i18n="f2.p">Finds missing tools on the other computer and installs them when you agree.</span></li>
+      <li><svg class="icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M10.5 13.5a4.5 4.5 0 1 1 3-3L21 18v3h-3v-2h-2v-2h-2z"/></svg><strong data-i18n="f5.h">Easy logins</strong><span data-i18n="f5.p">Your SSH key first; after one password it can set up key login for you.</span></li>
+      <li><svg class="icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M10 5a2 2 0 1 0 4 0a2 2 0 1 0-4 0M3 18a2 2 0 1 0 4 0a2 2 0 1 0-4 0M17 18a2 2 0 1 0 4 0a2 2 0 1 0-4 0M11 7l-5 9M13 7l5 9M7 18h10"/></svg><strong data-i18n="f6.h">Tailscale</strong><span data-i18n="f6.p">A second address per computer, for when the usual one can't be reached.</span></li>
+      <li><svg class="icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5"/></svg><strong data-i18n="f3.h">Smart fallbacks</strong><span data-i18n="f3.p">If a Wayland app fails, Obour retries without GPU sharing, then with X11.</span></li>
+      </ul>
+    </div>
+    <div class="group">
+      <span class="lane-v" aria-hidden="true"></span>
+      <h3 data-i18n="features.g2">Day to day</h3>
+      <ul>
+      <li><svg class="icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><strong data-i18n="f1.h">App browser</strong><span data-i18n="f1.p">See a computer's installed apps with their icons, add them in one click.</span></li>
+      <li><svg class="icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><strong data-i18n="f7.h">Your app menu</strong><span data-i18n="f7.p">Put any remote app in your system's app menu.</span></li>
+      <li><svg class="icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M12 3v8M7.1 6.5a7 7 0 1 0 9.8 0"/></svg><strong data-i18n="f4.h">Closes cleanly</strong><span data-i18n="f4.p">Close the window and what the app left running on the host ends too.</span></li>
+      <li><svg class="icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M3 4h18v4H3zM5 8v12h14V8M10 12h4"/></svg><strong data-i18n="f8.h">Backup and restore</strong><span data-i18n="f8.p">Everything in one .zip, ready for a new computer.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Install: the one real zebra crossing, then a terminal -->
+<section id="install" class="install">
+  <div class="crossing" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <h2 data-i18n="install.h">Get Obour.</h2>
+  <p data-i18n="install.p">Download the file for your system from the latest release, then run its command. The other computer only needs an SSH server; Obour offers to install the rest.</p>
+  <a class="button" href="https://github.com/Jazzmedo/Obour/releases/latest" data-i18n="install.cta">Latest release</a>
+  <dl class="cmds">
+    <dt data-i18n="install.appimage">AppImage, any distribution (open it with Gear Lever for updates)</dt>
+    <dd><code>chmod +x Obour-*-x86_64.AppImage &amp;&amp; ./Obour-*-x86_64.AppImage</code><button type="button" class="copy" data-i18n="copy">Copy</button></dd>
+    <dt>Debian / Ubuntu</dt>
+    <dd><code>sudo apt install ./obour_*_all.deb</code><button type="button" class="copy" data-i18n="copy">Copy</button></dd>
+    <dt>Fedora / openSUSE</dt>
+    <dd><code>sudo dnf install ./obour-*.noarch.rpm</code><button type="button" class="copy" data-i18n="copy">Copy</button></dd>
+    <dt>Nix</dt>
+    <dd><code>nix run github:Jazzmedo/Obour</code><button type="button" class="copy" data-i18n="copy">Copy</button></dd>
+  </dl>
+</section>
+
+<!-- 7. Alpha: roadworks ahead -->
+<section id="alpha" class="alpha">
+  <div class="barrier" aria-hidden="true"></div>
+  <h2 data-i18n="alpha.h">Obour is in alpha. Help it cross further.</h2>
+  <p data-i18n="alpha.p">So far it's been tested only with Ubuntu Server 26.04 as the other computer and Hyprland as the desktop. We need your testing and contributions to fix the app.</p>
+  <p class="links">
+    <a class="button" href="https://github.com/Jazzmedo/Obour/issues/new/choose" data-i18n="alpha.issue">Report a problem</a>
+    <a class="button ghost" href="https://github.com/Jazzmedo/Obour/blob/main/CONTRIBUTING.md" data-i18n="alpha.contrib">How to contribute</a>
+  </p>
+</section>
+
+</main>
+
+<!-- The end of the road: a stop line -->
+<footer>
+  <span class="stop-line" aria-hidden="true"></span>
+  <div class="end" aria-hidden="true">
+    <img class="end-logo" src="img/logo.svg" alt="" width="200" height="200">
+    <p class="end-word" data-i18n="brand">Obour</p>
+  </div>
+  <p class="end-actions">
+    <a class="button star" href="https://github.com/Jazzmedo/Obour"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span data-i18n="star">Star on GitHub</span></a>
+    <button id="lang" class="lang" type="button">العربية</button>
+  </p>
+  <p><span data-i18n="footer">Free software under the MIT license.</span> <a href="https://github.com/Jazzmedo/Obour">github.com/Jazzmedo/Obour</a></p>
+</footer>
+
+</body>
+</html>
