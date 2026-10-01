@@ -206,13 +206,6 @@ From a terminal: `obour backup obour.zip [--with-ssh-key]` and `obour restore ob
 
 More in [docs/HOW-IT-WORKS.md](docs/HOW-IT-WORKS.md).
 
-## Releasing
-
-`./release.sh` asks for the tag (for example `v0.2.0`), shows a summary and asks you to confirm.
-It then builds the AppImage, `.deb` and `.rpm`, commits the version, pushes the tag and publishes
-the GitHub release with all files. `./release.sh --dry-run` only builds.
-It needs podman or docker and a logged-in GitHub CLI (`gh auth login`).
-
 ## Contributing
 
 Bug reports, translations and fixes are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
