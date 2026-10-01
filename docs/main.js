@@ -66,6 +66,7 @@ function setLang(l) {
   html.dir = l === "ar" ? "rtl" : "ltr";
   document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t(el.dataset.i18n));
   document.querySelectorAll("[data-i18n-alt]").forEach(el => el.alt = t(el.dataset.i18nAlt));
+  if (l === "ar") document.querySelectorAll("img[data-ar]").forEach(img => img.src = img.dataset.ar);
   document.title = l === "ar" ? "عبور" : "Obour";
   const button = document.getElementById("lang");
   button.textContent = l === "ar" ? "English" : "العربية"; // names the other language
