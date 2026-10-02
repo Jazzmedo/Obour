@@ -56,6 +56,7 @@ packaging/linux/build-deb.sh   # dist/obour_<version>_all.deb
 packaging/linux/build-rpm.sh   # dist/obour-<version>-1.noarch.rpm
 nix build                      # ./result (Nix)
 assets/make-banner.py          # regenerates assets/banner.svg
+assets/make-og.py              # regenerates docs/img/og.png, the link-preview picture
 python3 -m unittest discover tests   # tests (the drag-and-drop proxy)
 ```
 
