@@ -424,7 +424,10 @@ def build_plan(launcher: Launcher, dark: bool | None = None,
     caps = _caps_for(launcher.host)
     gpu_off = bool(host_options(launcher.host).get("gpu_broken"))
 
-    env: dict[str, str] = {}
+    # Java (AWT/Swing) always uses X11, and draws an empty window under window managers
+    # that don't frame X11 windows (Hyprland, sway, niri…) unless told so.
+    # ponytail: set for every desktop; framing ones (GNOME, KDE) ignore it in practice.
+    env: dict[str, str] = {"_JAVA_AWT_WM_NONREPARENTING": "1"}
     forwards: list[str] = []
     if settings.compress:
         forwards.append("-C")
@@ -506,6 +509,8 @@ def build_plan(launcher: Launcher, dark: bool | None = None,
                                "Qt 5 apps like VLC show your cursor."))
             env["XCURSOR_THEME"] = theme
             env["XCURSOR_SIZE"] = str(size)
+            # Java (and other apps using X11's built-in cursors) only get the theme with this
+            env["XCURSOR_THEME_CORE"] = "1"
 
     env.update(settings.extra_env_pairs())
 
