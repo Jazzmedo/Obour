@@ -10,9 +10,7 @@ road: dark asphalt, off-white road paint and one road-marking amber. No gradient
 | Stripe on asphalt | `#292B2D` | What the stripes look like (road paint at 7% over asphalt) |
 | Text | `#F1EEE7` | Name and feature labels |
 | Muted text | `#B8B3A8` | Tagline |
-| Amber | `#F2B134` | The only accent: feature icons |
-| Logo gray | `#B6B6B6` | Logo shapes |
-| Logo white | `#FFFFFF` | Logo outlines and arrow |
+| Amber | `#F2B134` | The only accent: the logo's sign, feature icons |
 
 ## Contrast
 

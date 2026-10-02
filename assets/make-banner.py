@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Draw assets/banner.svg for the README: the logo, the name and what Obour does,
-as a pedestrian crossing on asphalt.
+on asphalt; the logo is the crossing.
 
 Text is turned into outlines (Pango lays them out, cairo writes paths), so the
 banner looks the same on every computer without the fonts installed.
@@ -19,7 +19,7 @@ from gi.repository import Pango, PangoCairo, Rsvg  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 W, H, RADIUS = 1280, 340, 28
-LOGO = os.path.join(HERE, "Logo", "trans.svg")
+LOGO = os.path.join(HERE, "Logo", "Trans-cropped.svg")
 OUT = os.path.join(HERE, "banner.svg")
 
 
@@ -142,10 +142,9 @@ FEATURES = [
 
 
 # Colors: an asphalt road and its markings. "Obour" means crossing in Arabic, the word
-# painted on pedestrian crossings, so the banner is a crossing: one warm accent, no
+# painted on pedestrian crossings; the logo carries the crossing. One warm accent, no
 # gradients. The same values, with hex codes, are in assets/PALETTE.md.
 ASPHALT = (0x1b / 255, 0x1d / 255, 0x20 / 255)
-STRIPE = (0xe8 / 255, 0xe4 / 255, 0xda / 255)     # road paint, off-white
 AMBER = (0xf2 / 255, 0xb1 / 255, 0x34 / 255)      # road-marking yellow
 TEXT = (0xf1 / 255, 0xee / 255, 0xe7 / 255)
 MUTED = (0xb8 / 255, 0xb3 / 255, 0xa8 / 255)
@@ -169,17 +168,6 @@ def feature(cr, x, y, label, icon):
     return 30 + logical.width
 
 
-def crossing(cr, x0, x1, top, bottom):
-    """Zebra-crossing bars, seen from above, worn at the ends."""
-    width, gap = 34, 30
-    x = x0
-    while x + width <= x1:
-        cr.rectangle(x, top, width, bottom - top)
-        x += width + gap
-    cr.set_source_rgba(*STRIPE, 0.07)
-    cr.fill()
-
-
 def main():
     surface = cairo.SVGSurface(OUT, W, H)
     surface.set_document_unit(cairo.SVGUnit.PX)
@@ -189,9 +177,6 @@ def main():
     cr.set_source_rgb(*ASPHALT)
     cr.fill_preserve()
     cr.clip()
-
-    # the crossing runs under the logo: from one computer to the other, like its arrow
-    crossing(cr, 30, 340, 0, H)
 
     # logo, as vectors
     cy = H / 2
