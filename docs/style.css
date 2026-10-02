@@ -82,6 +82,8 @@ section { padding: 6rem max(6vw, calc((100% - 1080px) / 2)); }
 }
 .hero-stripes { position: absolute; inset: -20% 0; background: var(--stripes); }
 .hero-logo { position: relative; width: clamp(140px, 22vw, 260px); height: auto; }
+/* moved every frame: their own layers, so Firefox moves them instead of repainting */
+.motion :is(.hero-logo, .hero-stripes, .win, .file, .road, .shots img) { will-change: transform; }
 .hero-text { position: relative; }
 .hero h1 { font-size: clamp(3.5rem, 10vw, 6rem); margin: 0; }
 .badge { display: inline-block; margin: 0 0 .5rem; padding: .1em .8em; border-radius: 99px; border: 1.5px solid var(--amber); color: var(--amber); font-weight: 500; font-size: .9rem; }
@@ -142,8 +144,9 @@ section { padding: 6rem max(6vw, calc((100% - 1080px) / 2)); }
 
 /* 4. screenshots, driving in on a road */
 .screens { overflow-x: clip; }
-.shots { display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: 2.5rem; margin-top: 3rem; perspective: 1400px; }
-.shots img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 30px 60px -20px rgb(0 0 0 / .6); }
+.shots { display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: 2.5rem; margin-top: 3rem; }
+.shots img { width: 100%; height: auto; border-radius: 12px; }  /* no shadow: costly while they move */
+.shots img[data-en]:not([src]) { display: none; }  /* without JS, the <noscript> copies show */
 .road-strip { position: relative; height: 56px; margin-top: 2rem; background: var(--stripes); background-size: 48px 100%; }
 .lane { position: absolute; inset: 50% 0 auto; border-top: 3px dashed var(--amber); transform-origin: left; }
 [dir=rtl] .lane { transform-origin: right; }
@@ -190,7 +193,7 @@ footer { position: relative; padding: 0 max(6vw, calc((100% - 1080px) / 2)) 3rem
 .stop-line { display: block; height: 14px; background: var(--paint); transform-origin: left; }
 [dir=rtl] .stop-line { transform-origin: right; }
 .end { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.5rem); margin: 1rem 0 1.5rem; }
-.end-logo { width: clamp(4.5rem, 14vw, 10rem); height: auto; opacity: .1; }
+.end-logo { width: clamp(4.5rem, 14vw, 10rem); height: auto; opacity: .12; filter: grayscale(1); }
 .end-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin: 0 0 1.2rem; }
 .star { display: inline-flex; align-items: center; gap: .55em; }
 .end-word { margin: 0; font: 700 clamp(5rem, 18vw, 13rem)/.9 "Thmanyah Serif Display", serif; color: rgb(232 228 218 / .07); }

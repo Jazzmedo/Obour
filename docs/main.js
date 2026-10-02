@@ -66,7 +66,8 @@ function setLang(l) {
   html.dir = l === "ar" ? "rtl" : "ltr";
   document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t(el.dataset.i18n));
   document.querySelectorAll("[data-i18n-alt]").forEach(el => el.alt = t(el.dataset.i18nAlt));
-  if (l === "ar") document.querySelectorAll("img[data-ar]").forEach(img => img.src = img.dataset.ar);
+  // set here, not in the HTML, so a browser doesn't fetch the other language's screenshots first
+  document.querySelectorAll("img[data-en]").forEach(img => img.src = l === "ar" ? img.dataset.ar : img.dataset.en);
   document.title = l === "ar" ? "عبور" : "Obour";
   const button = document.getElementById("lang");
   button.textContent = l === "ar" ? "English" : "العربية"; // names the other language
@@ -118,6 +119,52 @@ if (window.gsap && window.ScrollTrigger && window.SplitText && window.TextPlugin
       .to(".hero-text", { y: -80, autoAlpha: 0, ease: "none" }, 0)
       .to(".hint", { autoAlpha: 0, ease: "none" }, 0);
 
+    // The logo walks to the right. The drawn legs stand still, so while it walks they
+    // are swapped for jointed ones (hip, knee, foot): a planted foot slides back exactly
+    // as fast as the crossing, a lifted one swings forward, the window sways over the
+    // leg it stands on. Units are the logo's own; see assets/Logo/Trans-cropped.svg.
+    const gap = 37.62, stance = 0.6, reach = gap * stance / 2;  // feet move with the stripes
+    const thigh = 14, shin = 14, ground = 168, hips = [145, 126];
+    const zebra = gsap.utils.toArray(".zebra"), walker = document.querySelector(".walker"), strides = gsap.utils.toArray(".stride");
+    gsap.set(".leg-a, .leg-b", { display: "none" });
+    gsap.set(strides, { display: "inline" });
+    const foot = t => t < stance                                    // where a foot is, 0..1 of a stride
+      ? { x: reach - 2 * reach * t / stance, y: ground }
+      : { x: -reach + 2 * reach * (0.5 - Math.cos(Math.PI * (t - stance) / (1 - stance)) / 2),
+          y: ground - 7 * Math.sin(Math.PI * (t - stance) / (1 - stance)) };
+    const legPath = (hipX, hipY, t) => {
+      const f = foot(t), dx = f.x, dy = f.y - hipY;
+      const d = Math.min(Math.hypot(dx, dy), thigh + shin - 0.01);
+      const bend = Math.acos((thigh * thigh + d * d - shin * shin) / (2 * thigh * d));
+      const a = Math.atan2(dy, dx) - bend;                          // the knee points forward
+      const kx = hipX + thigh * Math.cos(a), ky = hipY + thigh * Math.sin(a);
+      const fx = hipX + dx * d / Math.hypot(dx, dy), fy = hipY + dy * d / Math.hypot(dx, dy);
+      return `M${hipX} ${hipY}L${kx} ${ky}L${fx} ${fy}l5 0`;
+    };
+    const render = p => {
+      const bob = -0.6 * (1 + Math.cos(4 * Math.PI * (p - stance / 2)));  // highest over a planted foot
+      // written straight to the SVG: no tweens made per frame (they are cheap in Firefox too)
+      walker.setAttribute("transform", `translate(0 ${bob}) rotate(${2.5 * Math.cos(2 * Math.PI * (p - stance / 2))} 135 146)`);
+      strides.forEach((s, i) => s.setAttribute("d", legPath(hips[i], 143 + bob, (p + i / 2) % 1)));
+      zebra.forEach((bar, i) => {                                   // the crossing slides left
+        const x = (i - 3) * gap - p * gap;
+        const fade = gsap.utils.clamp(0, 1, (1.6 * gap - Math.abs(x)) / (0.6 * gap));  // in and out at the edges
+        bar.setAttribute("opacity", fade);
+        if (fade) bar.setAttribute("transform", `translate(${x + 136.3} 157.449) skewX(${Math.atan(0.283 * x / gap) * 180 / Math.PI}) translate(-136.3 -157.449)`);
+      });
+    };
+    const stride = { p: 0 };
+    const walk = gsap.to(stride, { p: 1, duration: 0.9, ease: "none", repeat: -1, onUpdate: () => render(stride.p) });
+    ScrollTrigger.create({
+      trigger: ".hero-logo", start: "top bottom", end: "bottom top",
+      onToggle: self => walk.paused(!self.isActive),
+      onUpdate: self => gsap.to(walk, {
+        timeScale: 1 + Math.min(Math.abs(self.getVelocity()) / 800, 2.5),
+        duration: 0.2, overwrite: true,
+        onComplete: () => gsap.to(walk, { timeScale: 1, duration: 0.8, ease: "power2.out" }),
+      }),
+    });
+
     // Paragraphs rise in, word by word, as they come into view
     gsap.utils.toArray(".captions li:first-child > *, #install > p, #alpha > p")
       .forEach(el => gsap.from(words(el), { ...rise, scrollTrigger: once(el) }));
@@ -165,8 +212,9 @@ if (window.gsap && window.ScrollTrigger && window.SplitText && window.TextPlugin
     // 4. Screenshots drive in on the road from the reading start, tilted, and park flat
     const from = lang === "ar" ? 1 : -1;
     gsap.utils.toArray(".shots img").forEach((img, i) =>
-      gsap.fromTo(img, { xPercent: from * (60 + i * 25), rotationY: from * -22, autoAlpha: 0 },
-        { xPercent: 0, rotationY: 0, autoAlpha: 1, ease: "none",
+      // a 2D skew and squeeze stands in for a 3D turn: Firefox repaints 3D-turned images every frame
+      gsap.fromTo(img, { xPercent: from * (60 + i * 25), skewY: from * 5, scaleX: 0.86, autoAlpha: 0 },
+        { xPercent: 0, skewY: 0, scaleX: 1, autoAlpha: 1, ease: "none",
           scrollTrigger: { trigger: ".shots", start: "top 95%", end: "center 55%", scrub: 1 } }));
     gsap.fromTo(".lane", { scaleX: 0 }, { scaleX: 1, ease: "none",
       scrollTrigger: { trigger: ".shots", start: "top 80%", end: "bottom 60%", scrub: true } });
