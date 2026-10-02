@@ -440,6 +440,11 @@ def build_plan(launcher: Launcher, dark: bool | None = None,
                    ELECTRON_OZONE_PLATFORM_HINT="auto", SDL_VIDEODRIVER="wayland,x11")
     else:
         env.update(GDK_BACKEND="x11", QT_QPA_PLATFORM="xcb")
+    # The other computer's GPU only helps when waypipe shares its buffers with this one;
+    # otherwise each frame comes back through the CPU anyway, and old drivers can hang
+    # in it (radeon with Chromium/Electron apps: VSCodium never drew its window).
+    if not (protocol == "wayland" and settings.gpu and not gpu_off):
+        env["LIBGL_ALWAYS_SOFTWARE"] = "1"
 
     remote_sock = ""
     audio = False
